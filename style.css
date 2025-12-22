@@ -1,0 +1,87 @@
+:root {
+    /* ここで色を決めているよ */
+    --bg-color: #f6f4f2;       /* 背景：温かみのあるグレーベージュ */
+    --box-color: #ffffff;      /* 箱の背景：白 */
+    --text-color: #6e6460;     /* 文字：焦げ茶に近いグレー */
+    --accent-color: #cbbcb9;   /* アクセント：くすんだダスティピンク */
+    --hover-color: #b5a5a2;    /* ホバー時：少し濃いピンク */
+    --font-main: 'M PLUS 1p', sans-serif;
+    --font-serif: 'Shippori Mincho', serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--box-color);
+    width: 90%;
+    max-width: 480px; /* スマホで見やすい幅 */
+    padding: 40px 20px;
+    border-radius: 12px; /* 角を優しく丸く */
+    box-shadow: 0 4px 15px rgba(186, 175, 170, 0.2); /* ふんわりした影 */
+    text-align: center;
+}
+
+header h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    margin: 10px 0;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+}
+
+.icon-area img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* 丸く切り抜く */
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    padding: 3px;
+}
+
+.bio {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link-item {
+    display: block;
+    text-decoration: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 50px; /* 角丸ボタン */
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    font-family: var(--font-serif);
+}
+
+.link-item:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-2px); /* ふわっと浮く */
+    letter-spacing: 0.1em;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
