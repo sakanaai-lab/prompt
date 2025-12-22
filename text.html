@@ -1,0 +1,66 @@
+/* --- ここから下を追加してね --- */
+
+/* 戻るリンクのデザイン */
+.back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent-color);
+}
+
+/* ヘッダーのアイコンを少し小さく */
+.icon-area-small img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    margin-bottom: 10px;
+}
+
+/* お題の箱（アコーディオン） */
+.prompt-box {
+    background-color: var(--bg-color); /* 背景色と同じ色で馴染ませる */
+    margin-bottom: 15px;
+    border-radius: 8px;
+    text-align: left; /* 文字は左揃え */
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* 閉じている時のタイトル部分 */
+.prompt-box summary {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none; /* デフォルトの三角マークを消す */
+    position: relative;
+    background-color: #fff; /* 白い箱 */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    color: var(--text-color);
+}
+
+/* 三角マークの代わりにプラス記号を出す */
+.prompt-box summary::after {
+    content: "+";
+    position: absolute;
+    right: 20px;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* 開いた時にプラスをマイナスにする */
+.prompt-box[open] summary::after {
+    content: "-";
+}
+
+/* 開いた時に中身が表示される部分 */
+.prompt-content {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明の白 */
+    border-top: 1px dashed var(--accent-color);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
