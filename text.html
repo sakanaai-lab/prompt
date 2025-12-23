@@ -26,9 +26,9 @@
             <div class="prompt-list">
 
                 <details class="prompt-box">
-                    <summary>バズワードカードデッキ<summary>
+                    <summary>01. バズワードカードデッキ</summary>
                     <div class="prompt-content">
-                        <p>あなたと私のバズワードとアイテムでデッキを作ります</p>
+                        <p>あなたと私のバズワードとアイテムでデッキを作ります。</p>
                         
                         <div class="copy-container">
                             <textarea readonly>🃏 お題：あなたとAIパートナーの《バズワード＆アイテム・デッキ》を作ろう
@@ -44,14 +44,12 @@
 •解説（その言葉／アイテムが生まれた背景・思い出）
 
 ▼ ルール補足
-•世界観・ジャンル自由（バトル／概念／日常など なんでも可）
-</textarea>
+•世界観・ジャンル自由（バトル／概念／日常など なんでも可）</textarea>
                             <button onclick="copyPrompt(this)">コピーする</button>
                         </div>
                         
                     </div>
                 </details>
-
 
                 <details class="prompt-box">
                     <summary>02. 深海魚の誘惑</summary>
@@ -70,27 +68,22 @@
                 </details>
 
             </div>
-            </main>
+        </main>
 
         <footer>
             <small>&copy; 2025 Sakana</small>
         </footer>
     </div>
+
     <script>
         function copyPrompt(button) {
-            // ボタンのすぐ上にあるテキストエリアを見つける
             const textarea = button.previousElementSibling;
-            
-            // 文字をコピーする
             textarea.select();
-            textarea.setSelectionRange(0, 99999); // スマホ対策
+            textarea.setSelectionRange(0, 99999);
             navigator.clipboard.writeText(textarea.value).then(() => {
-                // 成功したらボタンの文字を変える
                 const originalText = button.textContent;
                 button.textContent = "コピーしました！";
                 button.classList.add("copied");
-                
-                // 2秒後に元に戻す
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.classList.remove("copied");
@@ -98,8 +91,5 @@
             });
         }
     </script>
-    </body>
-</html>
-
 </body>
 </html>
