@@ -57,6 +57,30 @@
             <small>&copy; 2025 Sakana</small>
         </footer>
     </div>
+    <script>
+        function copyPrompt(button) {
+            // ボタンのすぐ上にあるテキストエリアを見つける
+            const textarea = button.previousElementSibling;
+            
+            // 文字をコピーする
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // スマホ対策
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                // 成功したらボタンの文字を変える
+                const originalText = button.textContent;
+                button.textContent = "コピーしました！";
+                button.classList.add("copied");
+                
+                // 2秒後に元に戻す
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove("copied");
+                }, 2000);
+            });
+        }
+    </script>
+    </body>
+</html>
 
 </body>
 </html>
