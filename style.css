@@ -150,3 +150,48 @@ footer {
     font-size: 0.95rem;
     line-height: 1.8;
 }
+
+/* --- コピー機能のデザイン --- */
+
+.copy-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* テキストエリア（文章が入る箱） */
+.copy-container textarea {
+    width: 100%;
+    height: 100px; /* 箱の高さ */
+    padding: 10px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: #fff;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    resize: none; /* サイズ変更禁止 */
+    box-sizing: border-box; /*枠線を含めてサイズ計算*/
+}
+
+/* コピーボタン */
+.copy-container button {
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: all 0.3s ease;
+}
+
+.copy-container button:hover {
+    opacity: 0.8;
+}
+
+/* コピー成功時のボタンの色 */
+.copy-container button.copied {
+    background-color: #8da399; /* 成功したら少し緑っぽい色になる */
+}
+
