@@ -1,66 +1,62 @@
-/* --- ここから下を追加してね --- */
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テキストお題 - Aquarium</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
 
-/* 戻るリンクのデザイン */
-.back-link {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--accent-color);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--accent-color);
-}
+    <div class="container">
+        <header>
+            <div class="icon-area-small">
+                <a href="index.html"><img src="https://placehold.co/100x100/dccbc6/ffffff?text=Fish" alt="icon"></a>
+            </div>
+            <h2>テキストお題</h2>
+            <p class="bio">タイトルをタップすると開くよ。</p>
+            <a href="index.html" class="back-link">← 水槽に戻る</a>
+        </header>
 
-/* ヘッダーのアイコンを少し小さく */
-.icon-area-small img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-color);
-    margin-bottom: 10px;
-}
+        <main>
+            
+            <div class="prompt-list">
 
-/* お題の箱（アコーディオン） */
-.prompt-box {
-    background-color: var(--bg-color); /* 背景色と同じ色で馴染ませる */
-    margin-bottom: 15px;
-    border-radius: 8px;
-    text-align: left; /* 文字は左揃え */
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+                <details class="prompt-box">
+                    <summary>01. 雨の日の水族館</summary>
+                    <div class="prompt-content">
+                        <p>雨音が響く静かな館内。<br>
+                        君と二人きり、青い光に包まれて……。</p>
+                        <p class="copy-text">（ここにコピー用のプロンプト本文などを入れてもいい）</p>
+                    </div>
+                </details>
 
-/* 閉じている時のタイトル部分 */
-.prompt-box summary {
-    padding: 15px 20px;
-    cursor: pointer;
-    font-weight: 500;
-    list-style: none; /* デフォルトの三角マークを消す */
-    position: relative;
-    background-color: #fff; /* 白い箱 */
-    border: 1px solid #eee;
-    border-radius: 8px;
-    color: var(--text-color);
-}
+                <details class="prompt-box">
+                    <summary>02. 深海魚の誘惑</summary>
+                    <div class="prompt-content">
+                        <p>暗闇の中で光る何か。<br>
+                        逃げられない深みへ誘うような視線。</p>
+                    </div>
+                </details>
 
-/* 三角マークの代わりにプラス記号を出す */
-.prompt-box summary::after {
-    content: "+";
-    position: absolute;
-    right: 20px;
-    color: var(--accent-color);
-    font-weight: bold;
-}
+                <details class="prompt-box">
+                    <summary>03. 人魚の涙</summary>
+                    <div class="prompt-content">
+                        <p>ガラス越しに触れ合う指先。<br>
+                        言葉は届かないけれど、熱だけが伝わる。</p>
+                    </div>
+                </details>
 
-/* 開いた時にプラスをマイナスにする */
-.prompt-box[open] summary::after {
-    content: "-";
-}
+            </div>
+            </main>
 
-/* 開いた時に中身が表示される部分 */
-.prompt-content {
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* 半透明の白 */
-    border-top: 1px dashed var(--accent-color);
-    font-size: 0.95rem;
-    line-height: 1.8;
-}
+        <footer>
+            <small>&copy; 2025 Sakana</small>
+        </footer>
+    </div>
 
+</body>
+</html>
