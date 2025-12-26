@@ -3,8 +3,9 @@
     --bg-color: #f2f6f7;       /* 背景：霧がかった淡い水色 */
     --box-color: #ffffff;      /* 箱の背景：白（そのまま） */
     --text-color: #4f5f66;     /* 文字：青みを含んだグレー */
-    --accent-color: #9fb8c1;   /* アクセント：くすみアクアブルー */
-    --hover-color: #7fa1ad;    /* ホバー時：少し深い水色 */
+  --accent-color: #9bbfc9;   /* くすみアクア */
+  --hover-color:  #7faab6;
+}
 
     --font-main: 'M PLUS 1p', sans-serif;
     --font-serif: 'Shippori Mincho', serif;
