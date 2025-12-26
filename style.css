@@ -1,14 +1,12 @@
 :root {
-    /* アクアリウム用・くすみ青ベース */
-    --bg-color: #f2f6f7;       /* 背景：霧がかった淡い水色 */
-    --box-color: #ffffff;      /* 箱の背景：白（そのまま） */
-    --text-color: #4f5f66;     /* 文字：青みを含んだグレー */
-  --accent-color: #9bbfc9;   /* くすみアクア */
-  --hover-color:  #7faab6;
-}
-
-    --font-main: 'M PLUS 1p', sans-serif;
-    --font-serif: 'Shippori Mincho', serif;
+  /* Aquarium くすみ水色テーマ */
+  --bg-color: #f2f7f9;        /* 背景：水っぽい白 */
+  --box-color: #ffffff;      /* 箱：白 */
+  --text-color: #5f6f75;     /* 文字：青みグレー */
+  --accent-color: #9bbfc9;   /* アクセント：くすみアクア */
+  --hover-color: #7faab6;    /* ホバー：少し濃いアクア */
+  --font-main: 'M PLUS 1p', sans-serif;
+  --font-serif: 'Shippori Mincho', serif;
 }
 
 body {
@@ -43,8 +41,9 @@ body {
 }
 
 .icon-area img {
-  border: 3px solid #9bbfc9;
   background-color: #eaf4f7;
+  border: 3px solid #9bbfc9;
+  box-shadow: 0 0 0 4px rgba(155, 191, 201, 0.25);
 }
 
 header h1 {
