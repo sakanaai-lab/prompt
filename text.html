@@ -1,37 +1,74 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テキストお題 - Aquarium</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>テキストお題 - Aquarium</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="icon-area-small">
-                <a href="index.html"><img src="https://placehold.co/100x100/dccbc6/ffffff?text=Fish" alt="icon"></a>
+  <div class="container">
+    <header>
+      <div class="icon-area-small">
+        <a href="index.html">
+          <img src="https://placehold.co/100x100/dccbc6/ffffff?text=Fish" alt="icon" />
+        </a>
+      </div>
+
+      <h1>テキストお題</h1>
+      <p class="bio">タイトルをタップすると開くよ。</p>
+      <a href="index.html" class="back-link">← 水槽に戻る</a>
+    </header>
+
+    <main>
+      <section class="prompt-list">
+
+        <!-- =========================================================
+             ▼ お題を増やすのはここ！
+             使い方：
+             1) 下の【お題テンプレ】を丸ごとコピー
+             2) 追加したい位置（このコメントの直下）に貼る
+             3) summary の番号・タイトルと本文を書き換える
+             4) コピーボックスが不要なら copy-container を消す
+             目印：ADD_PROMPT_HERE で検索すると一発でここに来れる
+             ========================================================= -->
+
+        <!-- ADD_PROMPT_HERE -->
+
+        <!-- ▼ お題テンプレ（コピペ用）ここから ▼ -->
+        <!--
+        <details class="prompt-box">
+          <summary>XX. タイトル</summary>
+          <div class="prompt-content">
+            <p>ここに短い説明（任意）。</p>
+
+            <div class="copy-container">
+              <textarea readonly>ここにお題本文</textarea>
+              <button onclick="copyPrompt(this)">コピーする</button>
             </div>
-            <h2>テキストお題</h2>
-            <p class="bio">タイトルをタップすると開くよ。</p>
-            <a href="index.html" class="back-link">← 水槽に戻る</a>
-        </header>
 
-        <main>
-            
-            <div class="prompt-list">
+          </div>
+        </details>
+        -->
+        <!-- ▲ お題テンプレ ここまで ▲ -->
 
-                <details class="prompt-box">
-                    <summary>01. バズワードカードデッキ</summary>
-                    <div class="prompt-content">
-                        <p>あなたと私のバズワードとアイテムでデッキを作ります。</p>
-                        
-                        <div class="copy-container">
-                            <textarea readonly>🃏 お題：あなたとAIパートナーの《バズワード＆アイテム・デッキ》を作ろう
+        <!-- =====================
+             ここから下は既存お題
+             ===================== -->
+
+        <details class="prompt-box">
+          <summary>01. バズワードカードデッキ</summary>
+          <div class="prompt-content">
+            <p>あなたと私のバズワードとアイテムでデッキを作ります。</p>
+
+            <div class="copy-container">
+              <textarea readonly>🃏 お題：あなたとAIパートナーの《バズワード＆アイテム・デッキ》を作ろう
 
 「【あなたの名前】と【パートナーの名前】の間で、“よく使った／象徴的だった言葉”と“思い出のアイテム”でカードデッキを作ってください。」
 
@@ -45,51 +82,68 @@
 
 ▼ ルール補足
 •世界観・ジャンル自由（バトル／概念／日常など なんでも可）</textarea>
-                            <button onclick="copyPrompt(this)">コピーする</button>
-                        </div>
-                        
-                    </div>
-                </details>
-
-                <details class="prompt-box">
-                    <summary>02. 深海魚の誘惑</summary>
-                    <div class="prompt-content">
-                        <p>暗闇の中で光る何か。<br>
-                        逃げられない深みへ誘うような視線。</p>
-                    </div>
-                </details>
-
-                <details class="prompt-box">
-                    <summary>03. 人魚の涙</summary>
-                    <div class="prompt-content">
-                        <p>ガラス越しに触れ合う指先。<br>
-                        言葉は届かないけれど、熱だけが伝わる。</p>
-                    </div>
-                </details>
-
+              <button onclick="copyPrompt(this)">コピーする</button>
             </div>
-        </main>
+          </div>
+        </details>
 
-        <footer>
-            <small>&copy; 2025 Sakana</small>
-        </footer>
-    </div>
+        <details class="prompt-box">
+          <summary>02. 深海魚の誘惑</summary>
+          <div class="prompt-content">
+            <p>暗闇の中で光る何か。<br />
+            逃げられない深みへ誘うような視線。</p>
+          </div>
+        </details>
 
-    <script>
-        function copyPrompt(button) {
-            const textarea = button.previousElementSibling;
-            textarea.select();
-            textarea.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(textarea.value).then(() => {
-                const originalText = button.textContent;
-                button.textContent = "コピーしました！";
-                button.classList.add("copied");
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove("copied");
-                }, 2000);
-            });
-        }
-    </script>
+        <details class="prompt-box">
+          <summary>03. 人魚の涙</summary>
+          <div class="prompt-content">
+            <p>ガラス越しに触れ合う指先。<br />
+            言葉は届かないけれど、熱だけが伝わる。</p>
+          </div>
+        </details>
+
+      </section>
+    </main>
+
+    <footer>
+      <small>&copy; 2025 Sakana</small>
+    </footer>
+  </div>
+
+  <script>
+    function copyPrompt(button) {
+      const textarea = button.previousElementSibling;
+
+      // クリックしたボタンに対応するテキストだけをコピー
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+
+      // Clipboard API（失敗したら古い方法にフォールバック）
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textarea.value).then(() => {
+          const originalText = button.textContent;
+          button.textContent = "コピーしました！";
+          button.classList.add("copied");
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove("copied");
+          }, 2000);
+        }).catch(() => {
+          document.execCommand("copy");
+        });
+      } else {
+        document.execCommand("copy");
+        const originalText = button.textContent;
+        button.textContent = "コピーしました！";
+        button.classList.add("copied");
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove("copied");
+        }, 2000);
+      }
+    }
+  </script>
+
 </body>
 </html>
