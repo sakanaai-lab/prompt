@@ -195,4 +195,52 @@ footer {
 .copy-container button.copied {
     background-color: #8da399; /* 成功したら少し緑っぽい色になる */
 }
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
 
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#backToTop:hover {
+  background-color: var(--hover-color);
+}
+.url-copy-button {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px dashed var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.url-copy-button:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.url-copy-button.copied {
+  background-color: var(--hover-color);
+  color: #fff;
+}
