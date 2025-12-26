@@ -26,3 +26,16 @@ window.PROMPTS_TEXT = [
     desc: "ガラス越しに触れ合う指先。\n言葉は届かないけれど、熱だけが伝わる。"
   }
 ];
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+window.addEventListener("scroll", () => {
+  const btn = document.getElementById("backToTop");
+  if (window.scrollY > 300) {
+    btn.classList.add("show");
+  } else {
+    btn.classList.remove("show");
+  }
+});
