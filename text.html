@@ -58,44 +58,91 @@
 
       const frag = document.createDocumentFragment();
 
-      for (const p of prompts) {
-        const details = document.createElement("details");
-        details.className = "prompt-box";
+for (const p of prompts) {
+  const details = document.createElement("details");
+  details.className = "prompt-box";
 
-        const summary = document.createElement("summary");
-        summary.textContent = p.title;
+  // ★ お題ごとのID（ない場合は適当に作る）
+  const pid = p.id || ("prompt-" + Math.random().toString(36).slice(2));
+  details.id = pid;
 
-        const content = document.createElement("div");
-        content.className = "prompt-content";
+  const summary = document.createElement("summary");
+  summary.textContent = p.title;
 
-        if (p.desc) {
-          const descP = document.createElement("p");
-          descP.innerHTML = String(p.desc).replaceAll("\n", "<br>");
-          content.appendChild(descP);
-        }
+  const content = document.createElement("div");
+  content.className = "prompt-content";
 
-        if (p.body) {
-          const copy = document.createElement("div");
-          copy.className = "copy-container";
+  if (p.desc) {
+    const descP = document.createElement("p");
+    descP.innerHTML = String(p.desc).replaceAll("\n", "<br>");
+    content.appendChild(descP);
+  }
 
-          const ta = document.createElement("textarea");
-          ta.readOnly = true;
-          ta.textContent = p.body;
+  // ★ お題ごとのURLコピーボタン（本文の上でも下でも好きな位置）
+  const linkBtn = document.createElement("button");
+  linkBtn.className = "url-copy-button";
+  linkBtn.type = "button";
+  linkBtn.textContent = "このお題のURLをコピー";
+  linkBtn.onclick = function () { copyPromptUrl(pid, linkBtn); };
+  content.appendChild(linkBtn);
 
-          const btn = document.createElement("button");
-          btn.textContent = "コピーする";
-          btn.onclick = function () { copyPrompt(btn); };
+  if (p.body) {
+    const copy = document.createElement("div");
+    copy.className = "copy-container";
 
-          copy.appendChild(ta);
-          copy.appendChild(btn);
-          content.appendChild(copy);
-        }
+    const ta = document.createElement("textarea");
+    ta.readOnly = true;
+    ta.textContent = p.body;
 
-        details.appendChild(summary);
-        details.appendChild(content);
-        frag.appendChild(details);
-      }
+    const btn = document.createElement("button");
+    btn.textContent = "コピーする";
+    btn.onclick = function () { copyPrompt(btn); };
 
+    copy.appendChild(ta);
+    copy.appendChild(btn);
+    content.appendChild(copy);
+  }
+
+  // ★ 開閉されたら、そのお題のハッシュをURLに反映
+  details.addEventListener("toggle", () => {
+    if (details.open) {
+      history.replaceState(null, "", "#" + pid);
+    }
+  });
+
+  details.appendChild(summary);
+  details.appendChild(content);
+  frag.appendChild(details);
+}
+function copyPromptUrl(promptId, button) {
+  const url = location.origin + location.pathname + "#" + promptId;
+
+  const done = () => {
+    const original = button.textContent;
+    button.textContent = "コピーしました！";
+    button.classList.add("copied");
+    setTimeout(() => {
+      button.textContent = original;
+      button.classList.remove("copied");
+    }, 2000);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(done).catch(() => {
+      document.execCommand("copy");
+      done();
+    });
+  } else {
+    const temp = document.createElement("textarea");
+    temp.value = url;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+    done();
+  }
+}
+      
       list.appendChild(frag);
     }
 
@@ -126,6 +173,15 @@
     }
 
     renderPrompts(window.PROMPTS_TEXT || []);
+    // ハッシュがあれば、そのお題を開く
+const hash = location.hash.replace("#", "");
+if (hash) {
+  const target = document.getElementById(hash);
+  if (target && target.tagName.toLowerCase() === "details") {
+    target.open = true;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
   </script>
 
 </body>
