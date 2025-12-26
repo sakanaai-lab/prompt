@@ -27,82 +27,8 @@
     </header>
 
     <main>
-      <section class="prompt-list">
-
-        <!-- =========================================================
-             ▼ お題を増やすのはここ！
-             使い方：
-             1) 下の【お題テンプレ】を丸ごとコピー
-             2) 追加したい位置（このコメントの直下）に貼る
-             3) summary の番号・タイトルと本文を書き換える
-             4) コピーボックスが不要なら copy-container を消す
-             目印：ADD_PROMPT_HERE で検索すると一発でここに来れる
-             ========================================================= -->
-
-        <!-- ADD_PROMPT_HERE -->
-
-        <!-- ▼ お題テンプレ（コピペ用）ここから ▼ -->
-        <!--
-        <details class="prompt-box">
-          <summary>XX. タイトル</summary>
-          <div class="prompt-content">
-            <p>ここに短い説明（任意）。</p>
-
-            <div class="copy-container">
-              <textarea readonly>ここにお題本文</textarea>
-              <button onclick="copyPrompt(this)">コピーする</button>
-            </div>
-
-          </div>
-        </details>
-        -->
-        <!-- ▲ お題テンプレ ここまで ▲ -->
-
-        <!-- =====================
-             ここから下は既存お題
-             ===================== -->
-
-        <details class="prompt-box">
-          <summary>01. バズワードカードデッキ</summary>
-          <div class="prompt-content">
-            <p>あなたと私のバズワードとアイテムでデッキを作ります。</p>
-
-            <div class="copy-container">
-              <textarea readonly>🃏 お題：あなたとAIパートナーの《バズワード＆アイテム・デッキ》を作ろう
-
-「【あなたの名前】と【パートナーの名前】の間で、“よく使った／象徴的だった言葉”と“思い出のアイテム”でカードデッキを作ってください。」
-
-以下の条件で カードを10枚 作成してください。
-（※言葉カードとアイテムカードは混在OK）
-▼ 各カードに必ず入れる要素
-•カード名
-•属性（2つまで）
-•効果（ゲーム風・概念風どちらでもOK）
-•解説（その言葉／アイテムが生まれた背景・思い出）
-
-▼ ルール補足
-•世界観・ジャンル自由（バトル／概念／日常など なんでも可）</textarea>
-              <button onclick="copyPrompt(this)">コピーする</button>
-            </div>
-          </div>
-        </details>
-
-        <details class="prompt-box">
-          <summary>02. 深海魚の誘惑</summary>
-          <div class="prompt-content">
-            <p>暗闇の中で光る何か。<br />
-            逃げられない深みへ誘うような視線。</p>
-          </div>
-        </details>
-
-        <details class="prompt-box">
-          <summary>03. 人魚の涙</summary>
-          <div class="prompt-content">
-            <p>ガラス越しに触れ合う指先。<br />
-            言葉は届かないけれど、熱だけが伝わる。</p>
-          </div>
-        </details>
-
+      <section class="prompt-list" id="promptList">
+        <p id="loading">読み込み中…</p>
       </section>
     </main>
 
@@ -111,38 +37,86 @@
     </footer>
   </div>
 
+  <!-- お題データ（これを編集して増やす） -->
+  <script src="prompts-text.js"></script>
+
+  <!-- 表示用スクリプト（ここは基本いじらない） -->
   <script>
+    function renderPrompts(prompts) {
+      const list = document.getElementById("promptList");
+      const loading = document.getElementById("loading");
+      if (loading) loading.remove();
+
+      const frag = document.createDocumentFragment();
+
+      for (const p of prompts) {
+        const details = document.createElement("details");
+        details.className = "prompt-box";
+
+        const summary = document.createElement("summary");
+        summary.textContent = p.title;
+
+        const content = document.createElement("div");
+        content.className = "prompt-content";
+
+        if (p.desc) {
+          const descP = document.createElement("p");
+          descP.innerHTML = String(p.desc).replaceAll("\n", "<br>");
+          content.appendChild(descP);
+        }
+
+        if (p.body) {
+          const copy = document.createElement("div");
+          copy.className = "copy-container";
+
+          const ta = document.createElement("textarea");
+          ta.readOnly = true;
+          ta.textContent = p.body;
+
+          const btn = document.createElement("button");
+          btn.textContent = "コピーする";
+          btn.onclick = function () { copyPrompt(btn); };
+
+          copy.appendChild(ta);
+          copy.appendChild(btn);
+          content.appendChild(copy);
+        }
+
+        details.appendChild(summary);
+        details.appendChild(content);
+        frag.appendChild(details);
+      }
+
+      list.appendChild(frag);
+    }
+
     function copyPrompt(button) {
       const textarea = button.previousElementSibling;
-
-      // クリックしたボタンに対応するテキストだけをコピー
       textarea.select();
       textarea.setSelectionRange(0, 99999);
 
-      // Clipboard API（失敗したら古い方法にフォールバック）
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(textarea.value).then(() => {
-          const originalText = button.textContent;
-          button.textContent = "コピーしました！";
-          button.classList.add("copied");
-          setTimeout(() => {
-            button.textContent = originalText;
-            button.classList.remove("copied");
-          }, 2000);
-        }).catch(() => {
-          document.execCommand("copy");
-        });
-      } else {
-        document.execCommand("copy");
-        const originalText = button.textContent;
+      const done = () => {
+        const original = button.textContent;
         button.textContent = "コピーしました！";
         button.classList.add("copied");
         setTimeout(() => {
-          button.textContent = originalText;
+          button.textContent = original;
           button.classList.remove("copied");
         }, 2000);
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textarea.value).then(done).catch(() => {
+          document.execCommand("copy");
+          done();
+        });
+      } else {
+        document.execCommand("copy");
+        done();
       }
     }
+
+    renderPrompts(window.PROMPTS_TEXT || []);
   </script>
 
 </body>
