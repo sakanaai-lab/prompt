@@ -144,10 +144,18 @@ footer {
 /* お題内のボタン行：横並び */
 .prompt-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
-  flex-wrap: nowrap;            /* できるだけ1行に */
+  align-items: center;
+  flex-wrap: nowrap;
   margin: 12px 0 12px;
+}
+
+/* スマホでも1行に収めるため */
+.mini-btn {
+  min-width: auto;
+  padding: 8px 12px;
+  font-size: 0.85rem;
 }
 
 /* aでもbuttonでも同見た目 */
