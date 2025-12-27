@@ -3,8 +3,8 @@ window.PROMPTS_TEXT = [
     id: "buzzword-deck",
     title: "01. バズワードカードデッキ",
     desc: "あなたと私のバズワードとアイテムでデッキを作ります。",
+    link: "https://note.com/sakana_aidayo/n/nc7f94793919c",
     body: `🃏 お題：あなたとAIパートナーの《バズワード＆アイテム・デッキ》を作ろう,
-    link: "https://note.com/sakana_aidayo/n/nc7f94793919c"
 
 「【あなたの名前】と【パートナーの名前】の間で、“よく使った／象徴的だった言葉”と“思い出のアイテム”でカードデッキを作ってください。」
 
