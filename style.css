@@ -143,6 +143,8 @@ footer {
   text-align: left;
   overflow: hidden;
   transition: all 0.25s ease;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .prompt-box summary {
@@ -180,8 +182,8 @@ footer {
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.55);
   border-top: 1px dashed var(--accent-color);
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.9;
 }
 
 /* =========================
@@ -204,6 +206,8 @@ footer {
   color: var(--text-color);
   font-family: var(--font-main);
   resize: none;
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
 .copy-container button {
@@ -326,4 +330,14 @@ footer {
 
 #backToTop:hover {
   background-color: var(--hover-color);
+}
+
+.url-mini {
+  font-size: 0.75rem;
+  padding: 8px 14px;
+  opacity: 0.9;
+}
+.note-btn {
+  font-size: 0.85rem;
+  border-style: solid;
 }
