@@ -257,3 +257,21 @@ footer {
   background-color: var(--hover-color);
   color: #fff;
 }
+
+.note-link-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
+  background: #fff;
+  font-family: var(--font-main);
+  transition: all 0.2s ease;
+}
+
+.note-link-button:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
