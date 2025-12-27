@@ -5,33 +5,66 @@
   --text-color: #5f6f75;     /* 文字：青みグレー */
   --accent-color: #9bbfc9;   /* アクセント：くすみアクア */
   --hover-color: #7faab6;    /* ホバー：少し濃いアクア */
+
   --font-main: 'M PLUS 1p', sans-serif;
   --font-serif: 'Shippori Mincho', serif;
 }
 
+/* =========================
+   Base
+========================= */
+* { box-sizing: border-box; }
+
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--font-main);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* =========================
+   Layout
+========================= */
 .container {
-    background-color: var(--box-color);
-    width: 90%;
-    max-width: 480px; /* スマホで見やすい幅 */
-    padding: 40px 20px;
-    border-radius: 12px; /* 角を優しく丸く */
-    box-shadow: 0 4px 15px rgba(186, 175, 170, 0.2); /* ふんわりした影 */
-    text-align: center;
+  background-color: var(--box-color);
+  width: 90%;
+  max-width: 480px;
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(186, 175, 170, 0.2);
+  text-align: center;
 }
 
+header h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  margin: 10px 0;
+  letter-spacing: 0.1em;
+  color: var(--text-color);
+}
+
+.bio {
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+  opacity: 0.85;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+/* =========================
+   Top page (index) parts
+========================= */
 .site-logo {
   font-family: var(--font-serif);
   font-size: 1.4rem;
@@ -40,174 +73,233 @@ body {
   margin-bottom: 10px;
 }
 
-.icon-area img {
-  background-color: #eaf4f7;
-  border: 3px solid #9bbfc9;
-  box-shadow: 0 0 0 4px rgba(155, 191, 201, 0.25);
-}
-
-header h1 {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    margin: 10px 0;
-    letter-spacing: 0.1em;
-    color: var(--text-color);
-}
-
-.icon-area img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; /* 丸く切り抜く */
-    object-fit: cover;
-    border: 3px solid var(--accent-color);
-    padding: 3px;
-}
-
-.bio {
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-    opacity: 0.8;
-}
-
 .links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .link-item {
-    display: block;
-    text-decoration: none;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 15px;
-    border-radius: 50px; /* 角丸ボタン */
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-    font-family: var(--font-serif);
+  display: block;
+  text-decoration: none;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 15px;
+  border-radius: 50px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+  font-family: var(--font-serif);
 }
 
 .link-item:hover {
-    background-color: var(--accent-color);
-    color: #fff;
-    transform: translateY(-2px); /* ふわっと浮く */
-    letter-spacing: 0.1em;
+  background-color: var(--accent-color);
+  color: #fff;
+  transform: translateY(-2px);
+  letter-spacing: 0.06em;
 }
 
-footer {
-    margin-top: 40px;
-    font-size: 0.75rem;
-    opacity: 0.6;
-}
-/* --- ここから下を追加してね --- */
+/* アイコン画像（トップ用） */
+.icon-area img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
 
-/* 戻るリンクのデザイン */
+  background-color: #eaf4f7;
+  border: 3px solid var(--accent-color);
+  padding: 3px;
+  box-shadow: 0 0 0 4px rgba(155, 191, 201, 0.25);
+}
+
+/* =========================
+   Text page parts
+========================= */
 .back-link {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--accent-color);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--accent-color);
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-color);
 }
 
-/* ヘッダーのアイコンを少し小さく */
 .icon-area-small img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-color);
-    margin-bottom: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-color);
+  padding: 2px;
+  margin-bottom: 10px;
+  background-color: #eaf4f7;
 }
 
-/* お題の箱（アコーディオン） */
+/* =========================
+   Accordion (prompt boxes)
+========================= */
 .prompt-box {
-    background-color: var(--bg-color); /* 背景色と同じ色で馴染ませる */
-    margin-bottom: 15px;
-    border-radius: 8px;
-    text-align: left; /* 文字は左揃え */
-    overflow: hidden;
-    transition: all 0.3s ease;
+  background-color: var(--bg-color);
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.25s ease;
 }
 
-/* 閉じている時のタイトル部分 */
 .prompt-box summary {
-    padding: 15px 20px;
-    cursor: pointer;
-    font-weight: 500;
-    list-style: none; /* デフォルトの三角マークを消す */
-    position: relative;
-    background-color: #fff; /* 白い箱 */
-    border: 1px solid #eee;
-    border-radius: 8px;
-    color: var(--text-color);
+  padding: 15px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+  position: relative;
+
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  color: var(--text-color);
 }
 
-/* 三角マークの代わりにプラス記号を出す */
+.prompt-box summary::-webkit-details-marker {
+  display: none;
+}
+
 .prompt-box summary::after {
-    content: "+";
-    position: absolute;
-    right: 20px;
-    color: var(--accent-color);
-    font-weight: bold;
+  content: "+";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-color);
+  font-weight: bold;
 }
 
-/* 開いた時にプラスをマイナスにする */
 .prompt-box[open] summary::after {
-    content: "-";
+  content: "-";
 }
 
-/* 開いた時に中身が表示される部分 */
 .prompt-content {
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5); /* 半透明の白 */
-    border-top: 1px dashed var(--accent-color);
-    font-size: 0.95rem;
-    line-height: 1.8;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.55);
+  border-top: 1px dashed var(--accent-color);
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
-/* --- コピー機能のデザイン --- */
-
+/* =========================
+   Copy area
+========================= */
 .copy-container {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* テキストエリア（文章が入る箱） */
 .copy-container textarea {
-    width: 100%;
-    height: 100px; /* 箱の高さ */
-    padding: 10px;
-    border: 1px solid var(--accent-color);
-    border-radius: 8px;
-    background-color: #fff;
-    color: var(--text-color);
-    font-family: var(--font-main);
-    resize: none; /* サイズ変更禁止 */
-    box-sizing: border-box; /*枠線を含めてサイズ計算*/
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--text-color);
+  font-family: var(--font-main);
+  resize: none;
 }
 
-/* コピーボタン */
 .copy-container button {
-    background-color: var(--accent-color);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: var(--font-main);
-    transition: all 0.3s ease;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 12px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: all 0.2s ease;
 }
 
 .copy-container button:hover {
-    opacity: 0.8;
+  background-color: var(--hover-color);
 }
 
-/* コピー成功時のボタンの色 */
 .copy-container button.copied {
-    background-color: #8da399; /* 成功したら少し緑っぽい色になる */
+  background-color: #8da399;
 }
+
+/* =========================
+   URL Copy button (page-top)
+========================= */
+.url-copy-button {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px dashed var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.url-copy-button:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.url-copy-button.copied {
+  background-color: var(--hover-color);
+  color: #fff;
+  border-style: solid;
+}
+
+/* =========================
+   Prompt action buttons (note + url)
+========================= */
+.prompt-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 14px 0 10px;
+}
+
+.mini-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 150px;
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  border: 1px dashed var(--accent-color);
+  background: transparent;
+  color: var(--text-color);
+
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mini-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+  border-style: solid;
+}
+
+.mini-btn.copied {
+  background-color: var(--hover-color);
+  color: #fff;
+  border-style: solid;
+}
+
+/* =========================
+   Back to top button
+========================= */
 #backToTop {
   position: fixed;
   bottom: 20px;
@@ -220,9 +312,10 @@ footer {
   color: #fff;
   font-size: 1.2rem;
   cursor: pointer;
+
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   z-index: 100;
 }
 
@@ -233,78 +326,4 @@ footer {
 
 #backToTop:hover {
   background-color: var(--hover-color);
-}
-.url-copy-button {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border: 1px dashed var(--accent-color);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.url-copy-button:hover {
-  background-color: var(--accent-color);
-  color: #fff;
-}
-
-.url-copy-button.copied {
-  background-color: var(--hover-color);
-  color: #fff;
-}
-
-.note-link-button {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  text-decoration: none;
-  border: 1px solid var(--accent-color);
-  color: var(--text-color);
-  background: #fff;
-  font-family: var(--font-main);
-  transition: all 0.2s ease;
-}
-
-.note-link-button:hover {
-  background: var(--accent-color);
-  color: #fff;
-}
-
-/* お題内のミニボタン2つを横並びにする入れ物 */
-.prompt-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap; /* 画面が狭いときは折り返す */
-  margin: 14px 0 10px;
-}
-
-/* aでもbuttonでも同じ見た目にする */
-.mini-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 140px;          /* 横幅を揃える */
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px dashed var(--accent-color);
-  background: transparent;
-  color: var(--text-color);
-  text-decoration: none;     /* aの下線消す */
-  font-family: var(--font-serif);
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.mini-btn:hover {
-  background: var(--accent-color);
-  color: #fff;
-  border-style: solid;
 }
