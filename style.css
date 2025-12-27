@@ -275,3 +275,36 @@ footer {
   background: var(--accent-color);
   color: #fff;
 }
+
+/* お題内のミニボタン2つを横並びにする入れ物 */
+.prompt-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap; /* 画面が狭いときは折り返す */
+  margin: 14px 0 10px;
+}
+
+/* aでもbuttonでも同じ見た目にする */
+.mini-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;          /* 横幅を揃える */
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px dashed var(--accent-color);
+  background: transparent;
+  color: var(--text-color);
+  text-decoration: none;     /* aの下線消す */
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mini-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+  border-style: solid;
+}
