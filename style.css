@@ -1,19 +1,12 @@
 :root {
-  /* Aquarium くすみ水色テーマ */
-  --bg-color: #f2f7f9;        /* 背景：水っぽい白 */
-  --box-color: #ffffff;      /* 箱：白 */
-  --text-color: #5f6f75;     /* 文字：青みグレー */
-  --accent-color: #9bbfc9;   /* アクセント：くすみアクア */
-  --hover-color: #7faab6;    /* ホバー：少し濃いアクア */
-
+  --bg-color: #f2f7f9;
+  --box-color: #ffffff;
+  --text-color: #5f6f75;
+  --accent-color: #9bbfc9;
+  --hover-color: #7faab6;
   --font-main: 'M PLUS 1p', sans-serif;
   --font-serif: 'Shippori Mincho', serif;
 }
-
-/* =========================
-   Base
-========================= */
-* { box-sizing: border-box; }
 
 body {
   background-color: var(--bg-color);
@@ -22,24 +15,28 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
-
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-/* =========================
-   Layout
-========================= */
 .container {
   background-color: var(--box-color);
-  width: 90%;
-  max-width: 480px;
-  padding: 40px 20px;
+  width: 92%;
+  max-width: 520px;              /* 少し広げた */
+  padding: 40px 18px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(186, 175, 170, 0.2);
   text-align: center;
+}
+
+.site-logo {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  color: var(--text-color);
+  margin-bottom: 10px;
 }
 
 header h1 {
@@ -52,8 +49,8 @@ header h1 {
 
 .bio {
   font-size: 0.9rem;
-  margin-bottom: 18px;
-  opacity: 0.85;
+  margin-bottom: 30px;
+  opacity: 0.8;
 }
 
 footer {
@@ -62,58 +59,7 @@ footer {
   opacity: 0.6;
 }
 
-/* =========================
-   Top page (index) parts
-========================= */
-.site-logo {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
-  color: var(--text-color);
-  margin-bottom: 10px;
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.link-item {
-  display: block;
-  text-decoration: none;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  padding: 15px;
-  border-radius: 50px;
-  transition: all 0.25s ease;
-  border: 1px solid transparent;
-  font-family: var(--font-serif);
-}
-
-.link-item:hover {
-  background-color: var(--accent-color);
-  color: #fff;
-  transform: translateY(-2px);
-  letter-spacing: 0.06em;
-}
-
-/* アイコン画像（トップ用） */
-.icon-area img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-
-  background-color: #eaf4f7;
-  border: 3px solid var(--accent-color);
-  padding: 3px;
-  box-shadow: 0 0 0 4px rgba(155, 191, 201, 0.25);
-}
-
-/* =========================
-   Text page parts
-========================= */
+/* 戻るリンク */
 .back-link {
   display: inline-block;
   margin-top: 10px;
@@ -122,54 +68,33 @@ footer {
   border-bottom: 1px dashed var(--accent-color);
 }
 
-.icon-area-small img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--accent-color);
-  padding: 2px;
-  margin-bottom: 10px;
-  background-color: #eaf4f7;
-}
-
-/* =========================
-   Accordion (prompt boxes)
-========================= */
+/* お題の箱 */
 .prompt-box {
   background-color: var(--bg-color);
   margin-bottom: 15px;
   border-radius: 8px;
   text-align: left;
   overflow: hidden;
-  transition: all 0.25s ease;
-  padding-left: 0;
-  padding-right: 0;
+  transition: all 0.3s ease;
 }
 
 .prompt-box summary {
-  padding: 15px 20px;
+  padding: 16px 18px;
   cursor: pointer;
   font-weight: 500;
   list-style: none;
   position: relative;
-
   background-color: #fff;
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--text-color);
-}
-
-.prompt-box summary::-webkit-details-marker {
-  display: none;
+  font-family: var(--font-serif);
 }
 
 .prompt-box summary::after {
   content: "+";
   position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 18px;
   color: var(--accent-color);
   font-weight: bold;
 }
@@ -179,59 +104,19 @@ footer {
 }
 
 .prompt-content {
-  padding: 20px;
+  padding: 18px;
   background-color: rgba(255, 255, 255, 0.55);
   border-top: 1px dashed var(--accent-color);
-  font-size: 1rem;
+  font-size: 0.98rem;
   line-height: 1.9;
 }
 
-/* =========================
-   Copy area
-========================= */
-.copy-container {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* 説明文 */
+.prompt-desc {
+  margin: 0 0 10px;
 }
 
-.copy-container textarea {
-  width: 100%;
-  height: 120px;
-  padding: 10px;
-  border: 1px solid var(--accent-color);
-  border-radius: 10px;
-  background-color: #fff;
-  color: var(--text-color);
-  font-family: var(--font-main);
-  resize: none;
-  font-size: 0.95rem;
-  line-height: 1.8;
-}
-
-.copy-container button {
-  background-color: var(--accent-color);
-  color: #fff;
-  border: none;
-  padding: 12px 10px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-family: var(--font-main);
-  transition: all 0.2s ease;
-}
-
-.copy-container button:hover {
-  background-color: var(--hover-color);
-}
-
-.copy-container button.copied {
-  background-color: #8da399;
-}
-
-/* =========================
-   URL Copy button (page-top)
-========================= */
+/* ページURLコピー */
 .url-copy-button {
   display: inline-block;
   margin-top: 10px;
@@ -239,11 +124,11 @@ footer {
   color: var(--text-color);
   border: 1px dashed var(--accent-color);
   padding: 8px 16px;
-  border-radius: 999px;
+  border-radius: 20px;
   font-size: 0.8rem;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .url-copy-button:hover {
@@ -254,39 +139,34 @@ footer {
 .url-copy-button.copied {
   background-color: var(--hover-color);
   color: #fff;
-  border-style: solid;
 }
 
-/* =========================
-   Prompt action buttons (note + url)
-========================= */
+/* お題内のボタン行：横並び */
 .prompt-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
-  flex-wrap: wrap;
-  margin: 14px 0 10px;
+  flex-wrap: nowrap;            /* できるだけ1行に */
+  margin: 12px 0 12px;
 }
 
+/* aでもbuttonでも同見た目 */
 .mini-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  min-width: 150px;
-  padding: 10px 16px;
+  min-width: 140px;
+  padding: 10px 14px;
   border-radius: 999px;
-
   border: 1px dashed var(--accent-color);
   background: transparent;
   color: var(--text-color);
-
   text-decoration: none;
   font-family: var(--font-serif);
   font-size: 0.9rem;
-
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;          /* 変な折り返し防止 */
 }
 
 .mini-btn:hover {
@@ -295,15 +175,65 @@ footer {
   border-style: solid;
 }
 
-.mini-btn.copied {
-  background-color: var(--hover-color);
-  color: #fff;
-  border-style: solid;
+/* URLコピーだけ少し文字小さめ（要望） */
+.mini-btn.url-btn {
+  font-size: 0.78rem;
+  min-width: 170px;
+  padding: 10px 12px;
 }
 
-/* =========================
-   Back to top button
-========================= */
+/* noteボタンは短めで可愛く */
+.mini-btn.note-btn {
+  min-width: 120px;
+}
+
+/* コピー枠（本文） */
+.copy-container {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 本文の枠を“広く見せる”ための版 */
+.copy-container.wide textarea {
+  height: 140px;               /* 少し縦も広げた */
+  font-size: 1.02rem;          /* 本文フォントちょい大きく */
+  line-height: 1.85;
+}
+
+.copy-container textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--accent-color);
+  border-radius: 12px;
+  background-color: #fff;
+  color: var(--text-color);
+  font-family: var(--font-main);
+  resize: none;
+  box-sizing: border-box;
+}
+
+.copy-container button {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
+}
+
+.copy-container button:hover {
+  opacity: 0.85;
+}
+
+.copy-container button.copied {
+  background-color: #8da399;
+}
+
+/* backToTop（置くなら） */
 #backToTop {
   position: fixed;
   bottom: 20px;
@@ -316,10 +246,9 @@ footer {
   color: #fff;
   font-size: 1.2rem;
   cursor: pointer;
-
   opacity: 0;
   pointer-events: none;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
   z-index: 100;
 }
 
@@ -330,14 +259,4 @@ footer {
 
 #backToTop:hover {
   background-color: var(--hover-color);
-}
-
-.url-mini {
-  font-size: 0.75rem;
-  padding: 8px 14px;
-  opacity: 0.9;
-}
-.note-btn {
-  font-size: 0.85rem;
-  border-style: solid;
 }
