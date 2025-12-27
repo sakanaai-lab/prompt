@@ -80,26 +80,31 @@
       const actions = document.createElement("div");
       actions.className = "prompt-actions";
 
-      // note記事ボタン（a）
-      if (p.link) {
-        const a = document.createElement("a");
-        a.href = p.link;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.className = "mini-btn note-btn";
-        a.textContent = "🗒️ note";
-        actions.appendChild(a);
-      }
+   // ボタンまとめ用の箱
+const actions = document.createElement("div");
+actions.className = "prompt-actions";
 
-      // URLコピーボタン（button）
-      const linkBtn = document.createElement("button");
-      linkBtn.className = "mini-btn url-btn";
-      linkBtn.type = "button";
-      linkBtn.textContent = "このお題のURLをコピー";
-      linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
-      actions.appendChild(linkBtn);
+// note記事ボタン
+if (p.link) {
+  const a = document.createElement("a");
+  a.href = p.link;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.className = "mini-btn";
+  a.textContent = "🗒️ note";
+  actions.appendChild(a);
+}
 
-      content.appendChild(actions);
+// URLコピーボタン
+const linkBtn = document.createElement("button");
+linkBtn.className = "mini-btn";
+linkBtn.type = "button";
+linkBtn.textContent = "このお題のURLをコピー";
+linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
+actions.appendChild(linkBtn);
+
+// まとめて追加
+content.appendChild(actions);
 
       // 本文（コピー枠）
       if (p.body) {
