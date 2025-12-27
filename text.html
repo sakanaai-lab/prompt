@@ -78,24 +78,24 @@ for (const p of prompts) {
     content.appendChild(descP);
   }
   
-  // ★ note記事リンクがある場合だけ「記事を読む」ボタンを出す
-  if (p.link) {
+// note記事ボタン（a）
+if (p.link) {
   const a = document.createElement("a");
   a.href = p.link;
   a.target = "_blank";
   a.rel = "noopener noreferrer";
-  a.className = "note-link-button";
+  a.className = "mini-btn";
   a.textContent = "note記事を読む";
   content.appendChild(a);
 }
 
-  // ★ お題ごとのURLコピーボタン（本文の上でも下でも好きな位置）
-  const linkBtn = document.createElement("button");
-  linkBtn.className = "url-copy-button";
-  linkBtn.type = "button";
-  linkBtn.textContent = "このお題のURLをコピー";
-  linkBtn.onclick = function () { copyPromptUrl(pid, linkBtn); };
-  content.appendChild(linkBtn);
+// URLコピーボタン（button）
+const linkBtn = document.createElement("button");
+linkBtn.className = "mini-btn";
+linkBtn.type = "button";
+linkBtn.textContent = "このお題のURLをコピー";
+linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
+content.appendChild(linkBtn);
 
   if (p.body) {
     const copy = document.createElement("div");
