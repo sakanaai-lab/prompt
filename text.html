@@ -77,6 +77,17 @@ for (const p of prompts) {
     descP.innerHTML = String(p.desc).replaceAll("\n", "<br>");
     content.appendChild(descP);
   }
+  
+  // ★ note記事リンクがある場合だけ「記事を読む」ボタンを出す
+  if (p.link) {
+  const a = document.createElement("a");
+  a.href = p.link;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.className = "note-link-button";
+  a.textContent = "note記事を読む";
+  content.appendChild(a);
+}
 
   // ★ お題ごとのURLコピーボタン（本文の上でも下でも好きな位置）
   const linkBtn = document.createElement("button");
