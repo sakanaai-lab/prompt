@@ -9,196 +9,218 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400&family=Shippori+Mincho:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <div class="icon-area-small">
-        <!-- ここは画像じゃなくロゴ文字にしてる版 -->
-        <div class="site-logo">Aquarium</div>
-      </div>
+<div class="container">
+  <header>
 
-      <button class="url-copy-button" type="button" onclick="copyPageUrl(this)">
-        このページのURLをコピー
-      </button>
+    <div class="icon-area-small">
+      <div class="site-logo">Aquarium</div>
+    </div>
 
-      <h1>テキストお題</h1>
-      <p class="bio">タイトルをタップすると開くよ。</p>
-      <a href="index.html" class="back-link">← 水槽に戻る</a>
-    </header>
+    <a href="javascript:void(0)"
+       class="url-copy-button"
+       role="button"
+       onclick="copyPageUrl(this)">
+      このページのURLをコピー
+    </a>
 
-    <main>
-      <section class="prompt-list" id="promptList">
-        <p id="loading">読み込み中…</p>
-      </section>
-    </main>
+    <h1>テキストお題</h1>
+    <p class="bio">タイトルをタップすると開くよ。</p>
+    <a href="index.html" class="back-link">← 水槽に戻る</a>
 
-    <footer>
-      <small>&copy; 2025 Sakana</small>
-    </footer>
-  </div>
+  </header>
 
-  <!-- お題データ（これを編集して増やす） -->
-  <script src="prompts-text.js"></script>
+  <main>
+    <section class="prompt-list" id="promptList">
+      <p id="loading">読み込み中…</p>
+    </section>
+  </main>
 
-  <script>
-    function renderPrompts(prompts) {
-      const list = document.getElementById("promptList");
-      const loading = document.getElementById("loading");
-      if (loading) loading.remove();
+  <footer>
+    <small>&copy; 2025 Sakana</small>
+  </footer>
+</div>
 
-      const frag = document.createDocumentFragment();
+<!-- お題データ -->
+<script src="prompts-text.js"></script>
 
-      for (const p of prompts) {
-        const details = document.createElement("details");
-        details.className = "prompt-box";
+<script>
+  function renderPrompts(prompts) {
+    const list = document.getElementById("promptList");
+    const loading = document.getElementById("loading");
+    if (loading) loading.remove();
 
-        // ★ お題ごとのID（ない場合は自動生成）
-        const pid = p.id || ("prompt-" + Math.random().toString(36).slice(2));
-        details.id = pid;
+    const frag = document.createDocumentFragment();
 
-        const summary = document.createElement("summary");
-        summary.textContent = p.title || "（タイトルなし）";
+    for (const p of prompts) {
+      const details = document.createElement("details");
+      details.className = "prompt-box";
 
-        const content = document.createElement("div");
-        content.className = "prompt-content";
+      // お題ID（必須。無いときは生成）
+      const pid = p.id || ("prompt-" + Math.random().toString(36).slice(2));
+      details.id = pid;
 
-        // 説明
-        if (p.desc) {
-          const descP = document.createElement("p");
-          descP.innerHTML = String(p.desc).replaceAll("\n", "<br>");
-          content.appendChild(descP);
-        }
+      const summary = document.createElement("summary");
+      summary.textContent = p.title;
 
-        // ★ アクションボタンを“まとめる箱”
-        const actions = document.createElement("div");
-        actions.className = "prompt-actions";
+      const content = document.createElement("div");
+      content.className = "prompt-content";
 
-// ボタンまとめ用ラッパー
-const actions = document.createElement("div");
-actions.className = "prompt-actions";
-
-// note記事ボタン
-if (p.link) {
-  const a = document.createElement("a");
-  a.href = p.link;
-  a.target = "_blank";
-  a.rel = "noopener noreferrer";
-  a.className = "mini-btn note-btn";
-  a.textContent = "🗒️ note記事を読む";
-  actions.appendChild(a);
-}
-
-// URLコピーボタン
-const linkBtn = document.createElement("button");
-linkBtn.className = "mini-btn url-mini";
-linkBtn.type = "button";
-linkBtn.textContent = "このお題のURLをコピー";
-linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
-actions.appendChild(linkBtn);
-
-content.appendChild(actions);わ
-
-        // 本文（コピー欄）
-        if (p.body) {
-          const copy = document.createElement("div");
-          copy.className = "copy-container";
-
-          const ta = document.createElement("textarea");
-          ta.readOnly = true;
-          ta.value = p.body;
-
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.textContent = "コピーする";
-          btn.onclick = function () { copyPrompt(btn); };
-
-          copy.appendChild(ta);
-          copy.appendChild(btn);
-          content.appendChild(copy);
-        }
-
-        // ★ 開閉されたら、そのお題のハッシュをURLに反映
-        details.addEventListener("toggle", () => {
-          if (details.open) {
-            history.replaceState(null, "", "#" + pid);
-          }
-        });
-
-        details.appendChild(summary);
-        details.appendChild(content);
-        frag.appendChild(details);
+      if (p.desc) {
+        const descP = document.createElement("p");
+        descP.className = "prompt-desc";
+        descP.innerHTML = String(p.desc).replaceAll("\n", "<br>");
+        content.appendChild(descP);
       }
 
-      list.appendChild(frag);
-    }
+      // ★ ボタン行（note + URLコピーを1行に）
+      const actions = document.createElement("div");
+      actions.className = "prompt-actions";
 
-    // このページのURLをコピー
-    function copyPageUrl(button) {
-      const url = location.href;
-      copyToClipboard(url, button);
-    }
-
-    // このお題のURLをコピー（#idつき）
-    function copyPromptUrl(promptId, button) {
-      const url = location.origin + location.pathname + "#" + promptId;
-      copyToClipboard(url, button);
-    }
-
-    // 共通コピー処理（成功表示もここで統一）
-    function copyToClipboard(text, button) {
-      const done = () => {
-        const original = button.textContent;
-        button.textContent = "コピーしました！";
-        button.classList.add("copied");
-        setTimeout(() => {
-          button.textContent = original;
-          button.classList.remove("copied");
-        }, 2000);
-      };
-
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
-      } else {
-        fallbackCopy(text, done);
+      // note記事ボタン（a）
+      if (p.link) {
+        const a = document.createElement("a");
+        a.href = p.link;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.className = "mini-btn note-btn";
+        a.textContent = "🗒️ note";
+        actions.appendChild(a);
       }
-    }
 
-    function fallbackCopy(text, done) {
-      const temp = document.createElement("textarea");
-      temp.value = text;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
-      done();
-    }
+      // URLコピーボタン（button）
+      const linkBtn = document.createElement("button");
+      linkBtn.className = "mini-btn url-btn";
+      linkBtn.type = "button";
+      linkBtn.textContent = "このお題のURLをコピー";
+      linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
+      actions.appendChild(linkBtn);
 
-    // 本文コピー（textareaの内容）
-    function copyPrompt(button) {
-      const textarea = button.previousElementSibling;
-      const text = textarea.value;
-      copyToClipboard(text, button);
-    }
+      content.appendChild(actions);
 
-    // 描画
-    renderPrompts(window.PROMPTS_TEXT || []);
+      // 本文（コピー枠）
+      if (p.body) {
+        const copy = document.createElement("div");
+        copy.className = "copy-container wide";
 
-    // ハッシュがあれば、そのお題を開く（ページ直リンク対応）
-    const hash = location.hash.replace("#", "");
-    if (hash) {
-      const target = document.getElementById(hash);
-      if (target && target.tagName.toLowerCase() === "details") {
-        target.open = true;
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        const ta = document.createElement("textarea");
+        ta.readOnly = true;
+        ta.textContent = p.body;
+
+        const btn = document.createElement("button");
+        btn.textContent = "コピーする";
+        btn.onclick = function () { copyPrompt(btn); };
+
+        copy.appendChild(ta);
+        copy.appendChild(btn);
+        content.appendChild(copy);
       }
+
+      // 開閉でURLにハッシュ反映（共有しやすい）
+      details.addEventListener("toggle", () => {
+        if (details.open) history.replaceState(null, "", "#" + pid);
+      });
+
+      details.appendChild(summary);
+      details.appendChild(content);
+      frag.appendChild(details);
     }
-  </script>
+
+    list.appendChild(frag);
+  }
+
+  function copyPageUrl(button) {
+    const url = location.href;
+
+    const done = () => {
+      const original = button.textContent;
+      button.textContent = "コピーしました！";
+      button.classList.add("copied");
+      setTimeout(() => {
+        button.textContent = original;
+        button.classList.remove("copied");
+      }, 2000);
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done).catch(() => {
+        fallbackCopy(url); done();
+      });
+    } else {
+      fallbackCopy(url); done();
+    }
+  }
+
+  function copyPromptUrl(promptId, button) {
+    const url = location.origin + location.pathname + "#" + promptId;
+
+    const done = () => {
+      const original = button.textContent;
+      button.textContent = "コピーしました！";
+      button.classList.add("copied");
+      setTimeout(() => {
+        button.textContent = original;
+        button.classList.remove("copied");
+      }, 2000);
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(url).then(done).catch(() => {
+        fallbackCopy(url); done();
+      });
+    } else {
+      fallbackCopy(url); done();
+    }
+  }
+
+  function fallbackCopy(text) {
+    const temp = document.createElement("textarea");
+    temp.value = text;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+  }
+
+  function copyPrompt(button) {
+    const textarea = button.previousElementSibling;
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+
+    const done = () => {
+      const original = button.textContent;
+      button.textContent = "コピーしました！";
+      button.classList.add("copied");
+      setTimeout(() => {
+        button.textContent = original;
+        button.classList.remove("copied");
+      }, 2000);
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(textarea.value).then(done).catch(() => {
+        document.execCommand("copy"); done();
+      });
+    } else {
+      document.execCommand("copy"); done();
+    }
+  }
+
+  renderPrompts(window.PROMPTS_TEXT || []);
+
+  // ハッシュがあれば該当お題を開く
+  const hash = location.hash.replace("#", "");
+  if (hash) {
+    const target = document.getElementById(hash);
+    if (target && target.tagName.toLowerCase() === "details") {
+      target.open = true;
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+</script>
 
 </body>
 </html>
