@@ -38,7 +38,17 @@ body {
   color: var(--text-color);
   margin-bottom: 10px;
 }
-
+.site-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+  background-color: #eaf4f7;
+  box-shadow: 0 0 0 4px rgba(155, 191, 201, 0.25);
+  display: block;
+  margin: 0 auto 10px;
+}
 header h1 {
   font-family: var(--font-serif);
   font-weight: 500;
