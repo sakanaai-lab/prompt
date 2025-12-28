@@ -1,4 +1,4 @@
-(<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
@@ -60,43 +60,45 @@
         details.id = pid;
 
         const summary = document.createElement("summary");
-        summary.textContent = p.title;
+        summary.textContent = p.title || "";
 
         const content = document.createElement("div");
         content.className = "prompt-content";
 
+        // 説明文
         if (p.desc) {
           const descP = document.createElement("p");
           descP.innerHTML = String(p.desc).replaceAll("\n", "<br>");
           content.appendChild(descP);
         }
 
-// ボタンエリア（横並び）
-const actions = document.createElement("div");
-actions.className = "prompt-actions";
+        // ボタンエリア（横並び）
+        const actions = document.createElement("div");
+        actions.className = "prompt-actions";
 
-// note アイコンだけ
-if (p.link) {
-  const noteLink = document.createElement("a");
-  noteLink.href = p.link;
-  noteLink.target = "_blank";
-  noteLink.rel = "noopener noreferrer";
-  noteLink.className = "icon-btn";
-  noteLink.title = "note記事を読む";
-  noteLink.textContent = "NOTE";
-  actions.appendChild(noteLink);
-}
+        // NOTEボタン（存在する時だけ）
+        if (p.link) {
+          const noteLink = document.createElement("a");
+          noteLink.href = p.link;
+          noteLink.target = "_blank";
+          noteLink.rel = "noopener noreferrer";
+          noteLink.className = "icon-btn";      // CSSで見た目を統一
+          noteLink.title = "note記事を読む";
+          noteLink.textContent = "NOTE";
+          actions.appendChild(noteLink);
+        }
 
-// URLコピー（小さめ）
-const linkBtn = document.createElement("button");
-linkBtn.className = "icon-btn small";
-linkBtn.type = "button";
-linkBtn.textContent = "URL";
-linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
-actions.appendChild(linkBtn);
+        // URLコピーボタン
+        const linkBtn = document.createElement("button");
+        linkBtn.className = "icon-btn";         // NOTEと同じクラスにして揃える
+        linkBtn.type = "button";
+        linkBtn.textContent = "URL";
+        linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
+        actions.appendChild(linkBtn);
 
-content.appendChild(actions);
+        content.appendChild(actions);
 
+        // 本文（コピー欄）
         if (p.body) {
           const copy = document.createElement("div");
           copy.className = "copy-container";
