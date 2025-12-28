@@ -176,7 +176,8 @@ footer {
   background-color: #fff;
   color: var(--text-color);
   font-family: var(--font-main);
-  font-size: 0.9rem;       /* 中の文字も少し大きく */
+  font-size: 0.85rem;       /* 中の文字も少し大きく */
+  line-height: 1.7;
   resize: none;
   box-sizing: border-box;
 }
