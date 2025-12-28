@@ -287,7 +287,9 @@ footer {
   border: 1px dashed var(--accent-color);
   background: transparent;
   color: var(--text-color);
-  font-size: 1.2rem;
+  font-size: 0.8rem;
+  padding: 6px 10px;      /* ← 余白を締める */
+  min-width: auto;        /* 横に広がらないように */
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
