@@ -278,4 +278,5 @@ footer {
   color: var(--accent-color);
   opacity: 0.4;
   user-select: none;        /* 触れない空気感 */
+  font-family: var(--font-serif);
 }
