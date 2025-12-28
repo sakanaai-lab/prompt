@@ -298,11 +298,6 @@ footer {
   border-style: solid;
 }
 
-/* URLの方は主張弱め */
-.icon-btn.small {
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-}
 
 /* 並びを整える */
 .prompt-actions {
@@ -310,4 +305,30 @@ footer {
   gap: 12px;
   justify-content: center;
   margin: 12px 0;
+}
+.icon-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:56px;
+  height:38px;
+  border-radius:999px;
+  border:1px dashed var(--accent-color);
+  background:transparent;
+  color:var(--text-color);
+  font-family:var(--font-serif);
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+
+.icon-btn:hover{
+  background:var(--accent-color);
+  color:#fff;
+  border-style:solid;
+}
+
+.icon-btn.small{
+  width:64px;
+  font-size:0.8rem;
 }
