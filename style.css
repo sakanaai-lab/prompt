@@ -238,6 +238,10 @@ footer {
 
 /* NOTE/URL 共通（サイズ固定） */
 .icon-btn{
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px dashed var(--accent-color);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
