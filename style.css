@@ -275,3 +275,39 @@ footer {
   background-color: var(--hover-color);
   color: #fff;
 }
+/* アイコンだけのアクションボタン */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px dashed var(--accent-color);
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+  border-style: solid;
+}
+
+/* URLの方は主張弱め */
+.icon-btn.small {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+
+/* 並びを整える */
+.prompt-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 12px 0;
+}
