@@ -272,9 +272,10 @@ footer {
   border-style: solid;
 }
 .bubble-divider {
-  margin: 20px 0 16px;
-  font-size: 0.6rem;
-  letter-spacing: 0.6em;
+  margin: 22px 0 18px;      /* 上を少し多めにして呼吸 */
+  font-size: 0.55rem;       /* 小さすぎない最小値 */
+  letter-spacing: 0.7em;    /* 泡っぽさの核 */
   color: var(--accent-color);
-  opacity: 0.45;
+  opacity: 0.4;
+  user-select: none;        /* 触れない空気感 */
 }
