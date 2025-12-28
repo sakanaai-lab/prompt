@@ -271,3 +271,10 @@ footer {
   color: #fff;
   border-style: solid;
 }
+.bubble-divider {
+  margin: 20px 0 16px;
+  font-size: 0.6rem;
+  letter-spacing: 0.6em;
+  color: var(--accent-color);
+  opacity: 0.45;
+}
