@@ -226,94 +226,44 @@ footer {
   color: #fff;
 }
 
-/* --- Prompt action buttons (note + url) --- */
+/* --- Prompt action buttons (NOTE + URL) --- */
 .prompt-actions {
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;          /* 1行にしたいので折り返さない */
-  margin: 14px 0 10px;
-}
-
-.mini-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  border: 1px dashed var(--accent-color);
-  background: transparent;
-  color: var(--text-color);
-  text-decoration: none;
-  font-family: var(--font-serif);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 10px 14px;
-  line-height: 1;
-  white-space: nowrap;        /* ボタン内改行禁止 */
-}
-
-.mini-btn:hover {
-  background: var(--accent-color);
-  color: #fff;
-  border-style: solid;
-}
-
-/* noteボタンは少し大きめ */
-.mini-btn-note {
-  min-width: 120px;
-  font-size: 0.95rem;
-}
-
-/* URLボタンは小さめ（要望） */
-.mini-btn-copyurl {
-  min-width: 120px;
-  font-size: 0.8rem;          /* ここが「小さく」 */
-  opacity: 0.95;
-}
-
-.mini-btn.copied {
-  background-color: var(--hover-color);
-  color: #fff;
-}
-/* アイコンだけのアクションボタン */
-.icon-btn {
-  width: 44px;              /* ← これが肝 */
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  border-radius: 50%;
-  border: 1px dashed var(--accent-color);
-  background: transparent;
-  color: var(--text-color);
-  font-size: 0.75rem;
-  padding: 5px 8px;      /* ← 余白を締める */
-  line-height: 1;          /* 行高を固定 */
-  min-width: auto;        /* 横に広がらないように */
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.icon-btn:hover {
-  background: var(--accent-color);
-  color: #fff;
-  border-style: solid;
-}
-
-
-/* 並びを整える */
-.prompt-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
+  flex-wrap: nowrap;     /* 折り返し禁止 */
   margin: 12px 0;
 }
 
+/* NOTE/URL 共通（サイズ固定） */
+.icon-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 30px;          /* ←小さめ */
+  min-width: 56px;       /* ←NOTEとURLを揃える核 */
+  padding: 0 12px;       /* 横余白だけ */
+
+  border-radius: 999px;  /* カプセル */
+  border: 1px dashed var(--accent-color);
+  background: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+
+  font-family: var(--font-serif);
+  font-size: 0.72rem;    /* ←小さめ */
+  line-height: 1;
+  letter-spacing: 0.06em;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
 .icon-btn:hover{
-  background:var(--accent-color);
-  color:#fff;
-  border-style:solid;
+  background: var(--accent-color);
+  color: #fff;
+  border-style: solid;
 }
