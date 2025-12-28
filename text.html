@@ -75,31 +75,24 @@
         const actions = document.createElement("div");
         actions.className = "prompt-actions";
 
-     // アクション行（note / URL）
-const actions = document.createElement("div");
-actions.className = "prompt-actions";
+        // note記事ボタン
+        if (p.link) {
+          const a = document.createElement("a");
+          a.href = p.link;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.className = "mini-btn mini-btn-note";
+          a.textContent = "🗒️ note";
+          actions.appendChild(a);
+        }
 
-// note アイコンだけ
-if (p.link) {
-  const noteLink = document.createElement("a");
-  noteLink.href = p.link;
-  noteLink.target = "_blank";
-  noteLink.rel = "noopener noreferrer";
-  noteLink.className = "icon-btn";
-  noteLink.title = "note記事を読む";
-  noteLink.textContent = "🗒️";
-  actions.appendChild(noteLink);
-}
-
-// URLコピー（小さめ）
-const linkBtn = document.createElement("button");
-linkBtn.className = "icon-btn small";
-linkBtn.type = "button";
-linkBtn.textContent = "URL";
-linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
-actions.appendChild(linkBtn);
-
-content.appendChild(actions);
+        // URLコピーボタン
+        const linkBtn = document.createElement("button");
+        linkBtn.className = "mini-btn mini-btn-copyurl";
+        linkBtn.type = "button";
+        linkBtn.textContent = "このお題のURL";
+        linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
+        actions.appendChild(linkBtn);
 
         // actionsを入れる（noteが無い場合もURLは出る）
         content.appendChild(actions);
