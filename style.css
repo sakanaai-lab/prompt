@@ -297,11 +297,6 @@ footer {
   text-decoration: none;
 }
 
-/* 🗒️ note 専用 */
-.icon-btn-note {
-  font-size: 0.75rem;       /* 絵文字は少しだけ大きめに */
-}
-
 .icon-btn:hover {
   background: var(--accent-color);
   color: #fff;
