@@ -4,6 +4,7 @@
   --text-color: #5f6f75;
   --accent-color: #9bbfc9;
   --hover-color: #7faab6;
+
   --font-main: 'M PLUS 1p', sans-serif;
   --font-serif: 'Shippori Mincho', serif;
 }
@@ -15,6 +16,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,20 +26,18 @@ body {
 .container {
   background-color: var(--box-color);
   width: 92%;
-  max-width: 520px;              /* 少し広げた */
-  padding: 40px 18px;
+  max-width: 520px;          /* 少し広げた */
+  padding: 40px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(186, 175, 170, 0.2);
   text-align: center;
 }
 
-.site-logo {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
-  color: var(--text-color);
+/* --- Top --- */
+.icon-area {
   margin-bottom: 10px;
 }
+
 .site-icon {
   width: 120px;
   height: 120px;
@@ -47,20 +47,48 @@ body {
   background-color: #eaf4f7;
   box-shadow: 0 0 0 4px rgba(155, 191, 201, 0.25);
   display: block;
-  margin: 0 auto 10px;
+  margin: 0 auto;
 }
-header h1 {
+
+.site-title {
   font-family: var(--font-serif);
   font-weight: 500;
   margin: 10px 0;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
   color: var(--text-color);
+  font-size: 2rem;
 }
 
 .bio {
-  font-size: 0.9rem;
-  margin-bottom: 30px;
-  opacity: 0.8;
+  font-size: 0.95rem;
+  margin-bottom: 26px;
+  opacity: 0.82;
+}
+
+/* --- Links --- */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link-item {
+  display: block;
+  text-decoration: none;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 15px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  font-family: var(--font-serif);
+}
+
+.link-item:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+  transform: translateY(-2px);
+  letter-spacing: 0.08em;
 }
 
 footer {
@@ -69,7 +97,19 @@ footer {
   opacity: 0.6;
 }
 
-/* 戻るリンク */
+/* --- Sub pages header --- */
+.site-logo {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.icon-area-small {
+  margin-bottom: 4px;
+}
+
 .back-link {
   display: inline-block;
   margin-top: 10px;
@@ -78,18 +118,17 @@ footer {
   border-bottom: 1px dashed var(--accent-color);
 }
 
-/* お題の箱 */
+/* --- Accordion --- */
 .prompt-box {
-  background-color: var(--bg-color);
+  background-color: transparent;
   margin-bottom: 15px;
-  border-radius: 8px;
+  border-radius: 10px;
   text-align: left;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 
 .prompt-box summary {
-  padding: 16px 18px;
+  padding: 15px 20px;
   cursor: pointer;
   font-weight: 500;
   list-style: none;
@@ -98,13 +137,12 @@ footer {
   border: 1px solid #eee;
   border-radius: 10px;
   color: var(--text-color);
-  font-family: var(--font-serif);
 }
 
 .prompt-box summary::after {
   content: "+";
   position: absolute;
-  right: 18px;
+  right: 20px;
   color: var(--accent-color);
   font-weight: bold;
 }
@@ -114,19 +152,55 @@ footer {
 }
 
 .prompt-content {
-  padding: 18px;
+  padding: 18px 18px 20px;
   background-color: rgba(255, 255, 255, 0.55);
   border-top: 1px dashed var(--accent-color);
-  font-size: 0.98rem;
-  line-height: 1.9;
+  font-size: 1rem;       /* 少し大きく */
+  line-height: 1.85;
 }
 
-/* 説明文 */
-.prompt-desc {
-  margin: 0 0 10px;
+/* --- Copy box --- */
+.copy-container {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* ページURLコピー */
+.copy-container textarea {
+  width: 100%;
+  height: 150px;            /* 広くした */
+  padding: 12px 12px;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+  background-color: #fff;
+  color: var(--text-color);
+  font-family: var(--font-main);
+  font-size: 1.02rem;       /* 中の文字も少し大きく */
+  resize: none;
+  box-sizing: border-box;
+}
+
+.copy-container button {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
+}
+
+.copy-container button:hover {
+  opacity: 0.85;
+}
+
+.copy-container button.copied {
+  background-color: #8da399;
+}
+
+/* --- Page URL copy button --- */
 .url-copy-button {
   display: inline-block;
   margin-top: 10px;
@@ -151,40 +225,31 @@ footer {
   color: #fff;
 }
 
-/* お題内のボタン行：横並び */
+/* --- Prompt action buttons (note + url) --- */
 .prompt-actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
-  margin: 12px 0 12px;
+  flex-wrap: nowrap;          /* 1行にしたいので折り返さない */
+  margin: 14px 0 10px;
 }
 
-/* スマホでも1行に収めるため */
-.mini-btn {
-  min-width: auto;
-  padding: 8px 12px;
-  font-size: 0.85rem;
-}
-
-/* aでもbuttonでも同見た目 */
 .mini-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 140px;
-  padding: 10px 14px;
   border-radius: 999px;
   border: 1px dashed var(--accent-color);
   background: transparent;
   color: var(--text-color);
   text-decoration: none;
   font-family: var(--font-serif);
-  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  white-space: nowrap;          /* 変な折り返し防止 */
+  padding: 10px 14px;
+  line-height: 1;
+  white-space: nowrap;        /* ボタン内改行禁止 */
 }
 
 .mini-btn:hover {
@@ -193,88 +258,20 @@ footer {
   border-style: solid;
 }
 
-/* URLコピーだけ少し文字小さめ（要望） */
-.mini-btn.url-btn {
-  font-size: 0.78rem;
-  min-width: 170px;
-  padding: 10px 12px;
-}
-
-/* noteボタンは短めで可愛く */
-.mini-btn.note-btn {
+/* noteボタンは少し大きめ */
+.mini-btn-note {
   min-width: 120px;
+  font-size: 0.95rem;
 }
 
-/* コピー枠（本文） */
-.copy-container {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* URLボタンは小さめ（要望） */
+.mini-btn-copyurl {
+  min-width: 120px;
+  font-size: 0.8rem;          /* ここが「小さく」 */
+  opacity: 0.95;
 }
 
-/* 本文の枠を“広く見せる”ための版 */
-.copy-container.wide textarea {
-  height: 140px;               /* 少し縦も広げた */
-  font-size: 1.02rem;          /* 本文フォントちょい大きく */
-  line-height: 1.85;
-}
-
-.copy-container textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--accent-color);
-  border-radius: 12px;
-  background-color: #fff;
-  color: var(--text-color);
-  font-family: var(--font-main);
-  resize: none;
-  box-sizing: border-box;
-}
-
-.copy-container button {
-  background-color: var(--accent-color);
-  color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-family: var(--font-main);
-  transition: all 0.3s ease;
-}
-
-.copy-container button:hover {
-  opacity: 0.85;
-}
-
-.copy-container button.copied {
-  background-color: #8da399;
-}
-
-/* backToTop（置くなら） */
-#backToTop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--accent-color);
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  z-index: 100;
-}
-
-#backToTop.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#backToTop:hover {
+.mini-btn.copied {
   background-color: var(--hover-color);
+  color: #fff;
 }
