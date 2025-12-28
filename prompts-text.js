@@ -1,5 +1,3 @@
-console.log("PROMPTS_TEXT loaded");
-
 window.PROMPTS_TEXT = [
   {
     id: "buzzword-deck",
@@ -25,26 +23,12 @@ window.PROMPTS_TEXT = [
     id: "deepsea-temptation",
     title: "02. 深海魚の誘惑",
     desc: "暗闇の中で光る何か。\n逃げられない深みへ誘うような視線。",
-    body: `（ここに本文を入れてね）`
+    body: `（ここにお題本文を入れてね）`
   },
   {
     id: "mermaid-tears",
     title: "03. 人魚の涙",
     desc: "ガラス越しに触れ合う指先。\n言葉は届かないけれど、熱だけが伝わる。",
-    body: `（ここに本文を入れてね）`
+    body: `（ここにお題本文を入れてね）`
   }
 ];
-
-// トップへ戻る（もしボタンを置くなら使う）
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-// ★ backToTop が無い時でも死なない安全版
-window.addEventListener("scroll", () => {
-  const btn = document.getElementById("backToTop");
-  if (!btn) return;
-
-  if (window.scrollY > 300) btn.classList.add("show");
-  else btn.classList.remove("show");
-});
