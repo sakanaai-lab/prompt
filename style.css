@@ -287,13 +287,16 @@ footer {
   border: 1px dashed var(--accent-color);
   background: transparent;
   color: var(--text-color);
-  font-size: 0.8rem;
-  padding: 6px 10px;      /* ← 余白を締める */
+  font-size: 0.75rem;
+  padding: 5px 8px;      /* ← 余白を締める */
+  line-height: 1;          /* 行高を固定 */
   min-width: auto;        /* 横に広がらないように */
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
 }
+
+
 
 .icon-btn:hover {
   background: var(--accent-color);
