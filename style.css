@@ -152,11 +152,11 @@ footer {
 }
 
 .prompt-content {
-  padding: 18px 18px 20px;
-  background-color: rgba(255, 255, 255, 0.55);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
   border-top: 1px dashed var(--accent-color);
-  font-size: 1rem;       /* 少し大きく */
-  line-height: 1.85;
+  font-size: 0.9rem;   /* ← ここだけ変更 */
+  line-height: 1.75;   /* 少し詰めるとバランス良い */
 }
 
 /* --- Copy box --- */
