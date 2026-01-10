@@ -413,3 +413,67 @@ footer {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(155, 191, 201, 0.6);
 }
+
+/* --- Oneword List --- */
+.oneword-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .oneword-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .oneword-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.oneword-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.oneword-card:hover {
+  box-shadow: 0 4px 12px rgba(155, 191, 201, 0.3);
+  transform: translateY(-2px);
+}
+
+.oneword-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  flex: 1;
+}
+
+.oneword-copy-btn {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.oneword-copy-btn:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}
+
+.oneword-copy-btn.copied {
+  background-color: #8da399;
+}
