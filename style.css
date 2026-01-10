@@ -57,7 +57,7 @@ body {
 }
 
 .site-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-weight: 500;
   margin: 10px 0;
   letter-spacing: 0.18em;
@@ -87,7 +87,7 @@ body {
   border-radius: 50px;
   transition: all 0.3s ease;
   border: 1px solid transparent;
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
 }
 
 .link-item:hover {
@@ -105,7 +105,7 @@ footer {
 
 /* --- Sub pages header --- */
 .site-logo {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 1.4rem;
   letter-spacing: 0.2em;
   color: var(--text-color);
@@ -263,7 +263,7 @@ footer {
   color: var(--text-color);
   text-decoration: none;
 
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 0.8125rem;
   line-height: 1;
   letter-spacing: 0.06em;
@@ -286,5 +286,5 @@ footer {
   color: var(--accent-color);
   opacity: 0.4;
   user-select: none;
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
 }
