@@ -422,18 +422,6 @@ footer {
   margin-top: 20px;
 }
 
-@media (min-width: 768px) {
-  .oneword-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .oneword-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .oneword-card {
   background-color: #fff;
   border: 1px solid #eee;
