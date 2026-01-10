@@ -5,7 +5,7 @@
   --accent-color: #9bbfc9;
   --hover-color: #7faab6;
 
-  --font-main: 'M PLUS 1p', sans-serif;
+  --font-main: 'Noto Sans JP', sans-serif;
   --font-serif: 'Shippori Mincho', serif;
 }
 
@@ -13,6 +13,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-main);
+  font-weight: 400;
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -57,7 +58,7 @@ body {
 }
 
 .site-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-weight: 500;
   margin: 10px 0;
   letter-spacing: 0.18em;
@@ -65,8 +66,17 @@ body {
   font-size: 2rem;
 }
 
+h1 {
+  font-family: var(--font-main);
+  font-weight: 500;
+  font-size: 1.75rem;
+  color: var(--text-color);
+  margin: 16px 0;
+}
+
 .bio {
-  font-size: 1rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
   margin-bottom: 26px;
   opacity: 0.82;
 }
@@ -87,7 +97,7 @@ body {
   border-radius: 50px;
   transition: all 0.3s ease;
   border: 1px solid transparent;
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
 }
 
 .link-item:hover {
@@ -105,7 +115,7 @@ footer {
 
 /* --- Sub pages header --- */
 .site-logo {
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 1.4rem;
   letter-spacing: 0.2em;
   color: var(--text-color);
@@ -137,6 +147,7 @@ footer {
   padding: 15px 20px;
   cursor: pointer;
   font-weight: 500;
+  font-size: 1rem;
   list-style: none;
   position: relative;
   background-color: #fff;
@@ -263,7 +274,7 @@ footer {
   color: var(--text-color);
   text-decoration: none;
 
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
   font-size: 0.8125rem;
   line-height: 1;
   letter-spacing: 0.06em;
@@ -286,5 +297,88 @@ footer {
   color: var(--accent-color);
   opacity: 0.4;
   user-select: none;
-  font-family: var(--font-serif);
+  font-family: var(--font-main);
+}
+
+/* --- Sample Image --- */
+.sample-image-container {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.sample-image {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 2px 8px rgba(155, 191, 201, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sample-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(155, 191, 201, 0.5);
+}
+
+/* --- Image Modal --- */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  animation: fadeIn 0.3s ease;
+}
+
+.image-modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 8px;
+  animation: zoomIn 0.3s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--accent-color);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
