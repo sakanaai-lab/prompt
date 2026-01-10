@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>一言お題 - Aquarium</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="icon-area-small">
+                <div class="site-logo">Aquarium</div>
+            </div>
+
+            <a href="javascript:void(0)" class="url-copy-button" role="button" onclick="copyPageUrl(this)">
+                このページのURLをコピー
+            </a>
+
+            <h1>一言お題</h1>
+            <p class="bio">気になったらボタンで即コピー。</p>
+            <a href="index.html" class="back-link">← 水槽に戻る</a>
+        </header>
+        <div class="bubble-divider">● ● ●</div>
+        <main>
+            <section class="oneword-list" id="onewordList">
+                <p id="loading">読み込み中…</p>
+            </section>
+        </main>
+
+        <footer>
+            <small>&copy; 2025 Sakana</small>
+        </footer>
+    </div>
+
+    <!-- Page Top Button -->
+    <button id="pageTopButton" class="page-top-button" onclick="scrollToTop()">↑</button>
+
+    <script src="prompts-oneword.js"></script>
+
+    <script>
+        function renderOnewords(onewords) {
+            const list = document.getElementById("onewordList");
+            const loading = document.getElementById("loading");
+            if (loading) loading.remove();
+
+            const frag = document.createDocumentFragment();
+
+            for (const item of onewords) {
+                const card = document.createElement("div");
+                card.className = "oneword-card";
+
+                const text = document.createElement("div");
+                text.className = "oneword-text";
+                text.textContent = item.text;
+
+                const button = document.createElement("button");
+                button.className = "oneword-copy-btn";
+                button.textContent = "コピー";
+                button.onclick = () => copyOneword(item.text, button);
+
+                card.appendChild(text);
+                card.appendChild(button);
+                frag.appendChild(card);
+            }
+
+            list.appendChild(frag);
+        }
+
+        function copyOneword(text, button) {
+            const done = () => {
+                const original = button.textContent;
+                button.textContent = "コピーした！";
+                button.classList.add("copied");
+                setTimeout(() => {
+                    button.textContent = original;
+                    button.classList.remove("copied");
+                }, 2000);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(done).catch(() => {
+                    const temp = document.createElement("textarea");
+                    temp.value = text;
+                    document.body.appendChild(temp);
+                    temp.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(temp);
+                    done();
+                });
+            } else {
+                const temp = document.createElement("textarea");
+                temp.value = text;
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand("copy");
+                document.body.removeChild(temp);
+                done();
+            }
+        }
+
+        function copyPageUrl(button) {
+            const url = location.href;
+
+            const done = () => {
+                const original = button.textContent;
+                button.textContent = "コピーしました！";
+                button.classList.add("copied");
+                setTimeout(() => {
+                    button.textContent = original;
+                    button.classList.remove("copied");
+                }, 2000);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(done).catch(() => {
+                    document.execCommand("copy");
+                    done();
+                });
+            } else {
+                const temp = document.createElement("textarea");
+                temp.value = url;
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand("copy");
+                document.body.removeChild(temp);
+                done();
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const button = document.getElementById('pageTopButton');
+            if (window.scrollY > 300) {
+                button.classList.add('visible');
+            } else {
+                button.classList.remove('visible');
+            }
+        });
+
+        renderOnewords(window.PROMPTS_ONEWORD || []);
+    </script>
+</body>
+
+</html>
