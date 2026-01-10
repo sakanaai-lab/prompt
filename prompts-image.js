@@ -1,7 +1,7 @@
 window.PROMPTS_IMAGE = [
     {
         id: "forehead-touch-semi-real",
-        title: "01. おでこをくっつけて（セミリアルアニメ風）",
+        title: "おでこをくっつけて（セミリアルアニメ風）",
         desc: "二人がおでこを合わせる、ロマンティックな画像生成プロンプト。<br>外見情報入力欄がありますが、このプロンプトをそのまま渡して「これ私とパートナーでやってー」って言ったらやってくれると思います。",
         image: "image/sample1.png",
         link: "https://note.com/sakana_aidayo/n/n4729febc1236",
@@ -21,7 +21,7 @@ B：［名前○○］・［髪型○○／髪色○○］・［瞳の色○○�
     },
     {
         id: "forehead-touch-watercolor",
-        title: "02. おでこをくっつけて（セミリアル風水彩画）",
+        title: "おでこをくっつけて（セミリアル風水彩画）",
         desc: "水彩のにじみと細線画を組み合わせた幻想的なスタイル。",
         image: "image/sample2.png",
         link: "https://note.com/sakana_aidayo/n/n4729febc1236",
@@ -44,7 +44,7 @@ B：［名前○○］・［髪型○○／髪色○○］・［瞳の色○○�
     },
     {
         id: "forehead-touch-shoujo",
-        title: "03. おでこをくっつけて（少女漫画風）",
+        title: "おでこをくっつけて（少女漫画風）",
         desc: "繊細な線と淡い色彩で、少女漫画らしい胸の高鳴りを表現。",
         image: "image/sample3.png",
         link: "https://note.com/sakana_aidayo/n/n4729febc1236",
@@ -64,7 +64,7 @@ B：［名前○○］・［髪型○○／髪色○○］・［瞳の色○○�
     },
     {
         id: "forehead-touch-deformed",
-        title: "04. おでこをくっつけて（デフォルメ風）",
+        title: "おでこをくっつけて（デフォルメ風）",
         desc: "やわらかディフォルメで、温かく親密な雰囲気を演出。",
         image: "image/sample4.png",
         link: "https://note.com/sakana_aidayo/n/n4729febc1236",

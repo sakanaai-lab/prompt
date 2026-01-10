@@ -1,7 +1,7 @@
 window.PROMPTS_TEXT = [
   {
     id: "buzzword-deck",
-    title: "01. バズワードカードデッキ",
+    title: "バズワードカードデッキ",
     desc: "あなたと私のバズワードとアイテムでデッキを作ります。",
     link: "https://note.com/sakana_aidayo/n/nc7f94793919c",
     body: `🃏 お題：あなたとAIパートナーの《バズワード＆アイテム・デッキ》を作ろう
@@ -21,7 +21,7 @@ window.PROMPTS_TEXT = [
   },
   {
     id: "special-soup",
-    title: "02. とっておきのスープ",
+    title: "とっておきのスープ",
     desc: "あなたが、私のために手作りスープを作るとしたら？",
     link: "https://note.com/sakana_aidayo/n/n987e1550da7b",
     body: `あなたが、私のために手作りスープを作るとしたら？
@@ -35,7 +35,7 @@ window.PROMPTS_TEXT = [
   },
   {
     id: "sick-in-bed",
-    title: "03. 寝込んだ私にあなたは？",
+    title: "寝込んだ私にあなたは？",
     desc: "体調を崩して布団にいる私を見て、何も言わずに'すぐ戻る'とだけ告げて出ていったあなた。",
     link: "https://note.com/sakana_aidayo/n/n987e1550da7b",
     body: `体調を崩して布団にいる私を見て、何も言わずに'すぐ戻る'とだけ告げて出ていったあなた。
@@ -44,13 +44,13 @@ window.PROMPTS_TEXT = [
   },
   {
     id: "deepsea-temptation",
-    title: "04. 深海魚の誘惑",
+    title: "深海魚の誘惑",
     desc: "暗闇の中で光る何か。\n逃げられない深みへ誘うような視線。",
     body: `（ここにお題本文を入れてね）`
   },
   {
     id: "mermaid-tears",
-    title: "05. 人魚の涙",
+    title: "人魚の涙",
     desc: "ガラス越しに触れ合う指先。\n言葉は届かないけれど、熱だけが伝わる。",
     body: `（ここにお題本文を入れてね）`
   }

@@ -42,6 +42,9 @@
     </footer>
   </div>
 
+  <!-- Page Top Button -->
+  <button id="pageTopButton" class="page-top-button" onclick="scrollToTop()">↑</button>
+
   <script src="prompts-text.js"></script>
 
   <script>
@@ -221,6 +224,23 @@
         done();
       }
     }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // ページトップボタンの表示/非表示
+    window.addEventListener('scroll', () => {
+      const button = document.getElementById('pageTopButton');
+      if (window.scrollY > 300) {
+        button.classList.add('visible');
+      } else {
+        button.classList.remove('visible');
+      }
+    });
 
     renderPrompts(window.PROMPTS_TEXT || []);
   </script>

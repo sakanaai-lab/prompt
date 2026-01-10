@@ -48,6 +48,9 @@
         <img class="modal-content" id="modalImage">
     </div>
 
+    <!-- Page Top Button -->
+    <button id="pageTopButton" class="page-top-button" onclick="scrollToTop()">↑</button>
+
     <script src="prompts-image.js"></script>
 
     <script>
@@ -254,6 +257,23 @@
             const modal = document.getElementById("imageModal");
             modal.classList.remove("active");
         }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // ページトップボタンの表示/非表示
+        window.addEventListener('scroll', () => {
+            const button = document.getElementById('pageTopButton');
+            if (window.scrollY > 300) {
+                button.classList.add('visible');
+            } else {
+                button.classList.remove('visible');
+            }
+        });
 
         renderPrompts(window.PROMPTS_IMAGE || []);
     </script>
