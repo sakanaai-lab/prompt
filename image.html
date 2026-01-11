@@ -61,7 +61,10 @@
 
             const frag = document.createDocumentFragment();
 
-            for (const p of prompts) {
+            // 逆順にして、最新のお題が一番上に表示されるようにする
+            const reversed = [...prompts].reverse();
+
+            for (const p of reversed) {
                 const details = document.createElement("details");
                 details.className = "prompt-box";
 
@@ -120,10 +123,50 @@
                 linkBtn.onclick = () => copyPromptUrl(pid, linkBtn);
                 actions.appendChild(linkBtn);
 
+
                 content.appendChild(actions);
 
-                // 本文（コピー欄）
-                if (p.body) {
+                // 複数プロンプト形式
+                if (p.prompts && Array.isArray(p.prompts)) {
+                    for (const prompt of p.prompts) {
+                        const copy = document.createElement("div");
+                        copy.className = "copy-container";
+
+                        const label = document.createElement("div");
+                        label.className = "prompt-label";
+                        label.textContent = prompt.label;
+                        copy.appendChild(label);
+
+                        // 各スタイルのサンプル画像
+                        if (prompt.image) {
+                            const imgContainer = document.createElement("div");
+                            imgContainer.className = "sample-image-container";
+
+                            const img = document.createElement("img");
+                            img.src = prompt.image;
+                            img.alt = prompt.label + " サンプル画像";
+                            img.className = "sample-image";
+                            img.onclick = () => openModal(prompt.image);
+
+                            imgContainer.appendChild(img);
+                            copy.appendChild(imgContainer);
+                        }
+
+                        const ta = document.createElement("textarea");
+                        ta.readOnly = true;
+                        ta.textContent = prompt.body;
+
+                        const btn = document.createElement("button");
+                        btn.textContent = "コピーする";
+                        btn.onclick = function () { copyPrompt(btn); };
+
+                        copy.appendChild(ta);
+                        copy.appendChild(btn);
+                        content.appendChild(copy);
+                    }
+                }
+                // 単一本文形式（従来）
+                else if (p.body) {
                     const copy = document.createElement("div");
                     copy.className = "copy-container";
 
@@ -139,6 +182,7 @@
                     copy.appendChild(btn);
                     content.appendChild(copy);
                 }
+
 
                 details.addEventListener("toggle", () => {
                     if (details.open) history.replaceState(null, "", "#" + pid);

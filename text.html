@@ -55,7 +55,10 @@
 
       const frag = document.createDocumentFragment();
 
-      for (const p of prompts) {
+      // 逆順にして、最新のお題が一番上に表示されるようにする
+      const reversed = [...prompts].reverse();
+
+      for (const p of reversed) {
         const details = document.createElement("details");
         details.className = "prompt-box";
 
