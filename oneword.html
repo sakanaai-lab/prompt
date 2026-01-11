@@ -45,9 +45,23 @@
     <!-- Page Top Button -->
     <button id="pageTopButton" class="page-top-button" onclick="scrollToTop()">↑</button>
 
-    <script src="prompts-oneword.js"></script>
-
     <script>
+        // Google Sheets API URL
+        const SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbzrTXlQRNCr5swDN_gUxm6Tpx4jR-lgjBQqRmD24vlG3Wuollmhg37pcTAKm4RImbpW/exec';
+
+        async function loadOnewords() {
+            try {
+                const response = await fetch(SHEETS_API_URL);
+                const data = await response.json();
+                // 逆順にして、最新のお題が一番上に表示されるようにする
+                const reversed = data.reverse();
+                renderOnewords(reversed);
+            } catch (error) {
+                console.error('データの読み込みに失敗しました:', error);
+                document.getElementById('loading').textContent = '読み込みに失敗しました。';
+            }
+        }
+
         function renderOnewords(onewords) {
             const list = document.getElementById("onewordList");
             const loading = document.getElementById("loading");
@@ -153,7 +167,8 @@
             }
         });
 
-        renderOnewords(window.PROMPTS_ONEWORD || []);
+        // ページ読み込み時にスプレッドシートからデータを取得
+        loadOnewords();
     </script>
 </body>
 
