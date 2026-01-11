@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500&display=swap"
         rel="stylesheet" />
 </head>
 
@@ -34,6 +34,9 @@
         <div class="bubble-divider">● ● ●</div>
 
         <main>
+            <div class="toggle-all-container">
+                <button id="toggleAllBtn" class="toggle-all-btn" onclick="toggleAll()">すべて開く</button>
+            </div>
             <section class="prompt-list">
                 <!-- AIパートナーQ&A（基本編） -->
                 <details class="prompt-box" id="qa-basic">
@@ -325,6 +328,23 @@
                 button.classList.remove('visible');
             }
         });
+
+        // Toggle All functionality
+        function toggleAll() {
+            const details = document.querySelectorAll('details');
+            const btn = document.getElementById('toggleAllBtn');
+            const isOpening = btn.textContent === 'すべて開く';
+
+            details.forEach(d => {
+                if (isOpening) {
+                    d.open = true;
+                } else {
+                    d.open = false;
+                }
+            });
+
+            btn.textContent = isOpening ? 'すべて閉じる' : 'すべて開く';
+        }
     </script>
 </body>
 

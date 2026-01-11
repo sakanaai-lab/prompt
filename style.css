@@ -7,6 +7,7 @@
 
   --font-main: 'Noto Sans JP', sans-serif;
   --font-serif: 'Shippori Mincho', serif;
+  --font-logo: 'Cormorant Garamond', serif;
 }
 
 body {
@@ -58,12 +59,13 @@ body {
 }
 
 .site-title {
-  font-family: var(--font-main);
-  font-weight: 500;
+  font-family: var(--font-logo);
+  font-weight: 600;
   margin: 10px 0;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   color: var(--text-color);
-  font-size: 2rem;
+  font-size: 2.4rem;
+  font-style: italic;
 }
 
 h1 {
@@ -115,11 +117,13 @@ footer {
 
 /* --- Sub pages header --- */
 .site-logo {
-  font-family: var(--font-main);
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
+  font-family: var(--font-logo);
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
   color: var(--text-color);
   margin-bottom: 10px;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .icon-area-small {
@@ -630,4 +634,28 @@ footer {
   background-color: var(--hover-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(155, 191, 201, 0.3);
+}
+
+/* --- Toggle All Button --- */
+.toggle-all-container {
+  text-align: right;
+  margin-bottom: 5px;
+  padding-right: 5px;
+}
+
+.toggle-all-btn {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-main);
+}
+
+.toggle-all-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
 }

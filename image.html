@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500&display=swap"
         rel="stylesheet" />
 </head>
 
@@ -32,6 +32,9 @@
         </header>
         <div class="bubble-divider">● ● ●</div>
         <main>
+            <div class="toggle-all-container">
+                <button id="toggleAllBtn" class="toggle-all-btn" onclick="toggleAll()">すべて開く</button>
+            </div>
             <section class="prompt-list" id="promptList">
                 <p id="loading">読み込み中…</p>
             </section>
@@ -204,6 +207,18 @@
                     target.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
             }
+        }
+
+        function toggleAll() {
+            const details = document.querySelectorAll('details');
+            const btn = document.getElementById('toggleAllBtn');
+            const isOpening = btn.textContent === 'すべて開く';
+
+            details.forEach(d => {
+                d.open = isOpening;
+            });
+
+            btn.textContent = isOpening ? 'すべて閉じる' : 'すべて開く';
         }
 
         function copyPrompt(button) {
