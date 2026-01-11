@@ -465,3 +465,17 @@ footer {
 .oneword-copy-btn.copied {
   background-color: #8da399;
 }
+
+.oneword-button-area {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.oneword-url-btn {
+  background-color: #7faab6;
+}
+
+.oneword-url-btn:hover {
+  background-color: #6a8f9a;
+}

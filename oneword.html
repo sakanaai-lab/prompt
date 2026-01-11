@@ -69,25 +69,59 @@
 
             const frag = document.createDocumentFragment();
 
-            for (const item of onewords) {
+            for (let i = 0; i < onewords.length; i++) {
+                const item = onewords[i];
                 const card = document.createElement("div");
                 card.className = "oneword-card";
+
+                // お題のIDを生成（インデックスベース）
+                const promptId = `oneword-${i}`;
+                card.id = promptId;
 
                 const text = document.createElement("div");
                 text.className = "oneword-text";
                 text.textContent = item.text;
 
-                const button = document.createElement("button");
-                button.className = "oneword-copy-btn";
-                button.textContent = "コピー";
-                button.onclick = () => copyOneword(item.text, button);
+                // ボタンエリア
+                const buttonArea = document.createElement("div");
+                buttonArea.className = "oneword-button-area";
+
+                // コピーボタン
+                const copyBtn = document.createElement("button");
+                copyBtn.className = "oneword-copy-btn";
+                copyBtn.textContent = "コピー";
+                copyBtn.onclick = () => copyOneword(item.text, copyBtn);
+
+                // URLコピーボタン
+                const urlBtn = document.createElement("button");
+                urlBtn.className = "oneword-copy-btn oneword-url-btn";
+                urlBtn.textContent = "URL";
+                urlBtn.onclick = () => copyOnewordUrl(promptId, urlBtn);
+
+                buttonArea.appendChild(copyBtn);
+                buttonArea.appendChild(urlBtn);
 
                 card.appendChild(text);
-                card.appendChild(button);
+                card.appendChild(buttonArea);
                 frag.appendChild(card);
             }
 
             list.appendChild(frag);
+
+            // ハッシュがあれば、そのお題にスクロール
+            const hash = location.hash.replace("#", "");
+            if (hash) {
+                const target = document.getElementById(hash);
+                if (target) {
+                    setTimeout(() => {
+                        target.scrollIntoView({ behavior: "smooth", block: "center" });
+                        target.style.backgroundColor = "#e8f4f8";
+                        setTimeout(() => {
+                            target.style.backgroundColor = "";
+                        }, 2000);
+                    }, 100);
+                }
+            }
         }
 
         function copyOneword(text, button) {
@@ -114,6 +148,40 @@
             } else {
                 const temp = document.createElement("textarea");
                 temp.value = text;
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand("copy");
+                document.body.removeChild(temp);
+                done();
+            }
+        }
+
+        function copyOnewordUrl(promptId, button) {
+            const url = location.origin + location.pathname + "#" + promptId;
+
+            const done = () => {
+                const original = button.textContent;
+                button.textContent = "コピーした！";
+                button.classList.add("copied");
+                setTimeout(() => {
+                    button.textContent = original;
+                    button.classList.remove("copied");
+                }, 2000);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(done).catch(() => {
+                    const temp = document.createElement("textarea");
+                    temp.value = url;
+                    document.body.appendChild(temp);
+                    temp.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(temp);
+                    done();
+                });
+            } else {
+                const temp = document.createElement("textarea");
+                temp.value = url;
                 document.body.appendChild(temp);
                 temp.select();
                 document.execCommand("copy");
