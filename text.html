@@ -107,8 +107,34 @@
 
         content.appendChild(actions);
 
-        // 本文（コピー欄）
-        if (p.body) {
+        // 複数プロンプト形式
+        if (p.prompts && Array.isArray(p.prompts)) {
+          for (const prompt of p.prompts) {
+            const copy = document.createElement("div");
+            copy.className = "copy-container";
+
+            if (prompt.label) {
+              const label = document.createElement("div");
+              label.className = "prompt-label";
+              label.textContent = prompt.label;
+              copy.appendChild(label);
+            }
+
+            const ta = document.createElement("textarea");
+            ta.readOnly = true;
+            ta.textContent = prompt.body;
+
+            const btn = document.createElement("button");
+            btn.textContent = "コピーする";
+            btn.onclick = function () { copyPrompt(btn); };
+
+            copy.appendChild(ta);
+            copy.appendChild(btn);
+            content.appendChild(copy);
+          }
+        }
+        // 単一本文形式（従来）
+        else if (p.body) {
           const copy = document.createElement("div");
           copy.className = "copy-container";
 
