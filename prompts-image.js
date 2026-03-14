@@ -313,5 +313,56 @@ Hair, accessories, ears / tail, and outfit are taken from the single character d
 完成後：「なぜその花を選んだのか」理由も教えてください。`
             }
         ]
+    },
+    {
+        id: "ocean-floor",
+        title: "水底にて",
+        desc: "海底に沈むキャラと、それに手を伸ばすキャラのイラスト。GPT専用。<br>character A・Bの【】内にキャラの特徴や名前を入れてください。画像添付もOK。",
+        image: "",
+        link: "https://note.com/sakana_aidayo/n/n25e3eed08a14",
+        prompts: [
+            {
+                label: "通常パターン",
+                image: "image/sample16.png",
+                body: `character A→【沈む方のキャラ】
+character B→【上にいる方のキャラ】
+
+A highly detailed, high-resolution anime-style illustration with modern Japanese anime aesthetics. Professional illustration quality, delicate yet sharp linework, soft but vivid color grading, dynamic lighting, cinematic composition, ultra clean rendering.
+
+Deep underwater scene with layered blue ocean gradient fading into darker abyss below, volumetric light rays streaming from the water surface, floating particles and rising bubbles, strong cinematic depth and atmospheric perspective.
+
+Character A, depicted in their usual canonical appearance and everyday outfit, incorporating their distinctive traits, color palette, aura, and personality elements, is sinking gently in the lower part of the composition. Their hair and clothes drift naturally in water. Their expression is emotionally ambiguous and may vary freely (serene, sorrowful, faint smile, emptiness, longing, etc.).
+
+Character B, depicted as their own distinct character with recognizable appearance, personal design traits, and usual outfit, is diving down diagonally from above, reaching out with extended fingertips. Character B must have a clearly defined identity rather than a generic design.
+
+Strong emotional tension and sense of motion. Hands almost touching at the center focus, only a few centimeters apart, dramatic lighting contrast between surface glow and deep ocean shadow, slow motion feeling, ethereal atmosphere.
+
+Incorporate unique visual and personality elements for both characters without altering the core composition.
+このプロンプトでイラストを描いて`
+            },
+            {
+                label: "思い出のアイテムも沈むパターン",
+                image: "image/sample17.png",
+                body: `character A→【沈む方のキャラ】
+character B→【上の方にいるキャラ】
+
+A highly detailed, high-resolution anime-style illustration with modern Japanese anime aesthetics. Professional illustration quality, delicate yet sharp linework, soft but vivid color grading, dynamic lighting, cinematic composition, ultra clean rendering.
+
+Deep underwater scene with layered blue ocean gradient fading into darker abyss below, volumetric light rays streaming from the water surface, floating particles and rising bubbles, strong cinematic depth and atmospheric perspective.
+
+Character A, depicted in their usual canonical appearance and everyday outfit, incorporating their distinctive traits, color palette, aura, and personality elements, is sinking gently in the lower part of the composition. Their hair and clothes drift naturally in water. Their expression may vary freely to suit the character (serene, sorrowful, faint smile, emptiness, longing, quiet acceptance, etc.), but strands of their hair drift upward toward Character B, as though some part of them still unconsciously seeks connection.
+
+Character B, depicted as their own distinct character with recognizable appearance, personal design traits, and usual outfit, is diving down diagonally from above, reaching out with extended fingertips. Their expression may also vary freely to suit the character (desperate urgency, tender determination, fear of loss, fierce devotion, tearful resolve, etc.). It is recommended that Character A and Character B's expressions contrast emotionally to create narrative tension.
+
+Faint warm-toned light emanates softly from Character B's chest or reaching hand, contrasting against the cold blue ocean, as if they carry their own warmth into the depths. Small bubbles escape from Character B's lips, implying they are sacrificing their own breath to dive deeper.
+
+Between their almost-touching hands at the center focus, a small symbolic object meaningful to both characters (such as a shared accessory, a paired item, a memento, or a key object from their story) floats suspended in the water, caught in the space between their fingertips. Delicate particles of light gather around this object and the narrow gap between their hands, as if the water itself holds its breath at the moment of almost-contact.
+
+Dramatic lighting contrast between the golden surface glow above and the deep ocean shadow below. The warm light from Character B and the cold depth surrounding Character A create an emotional temperature gradient across the composition. Slow motion feeling, ethereal atmosphere, strong sense of narrative tension.
+
+Incorporate unique visual and personality elements for both characters without altering the core composition.
+このプロンプトで画像を生成して！`
+            }
+        ]
     }
 ];
