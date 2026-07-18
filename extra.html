@@ -168,20 +168,24 @@
                     </div>
                 </details>
 
-                <!-- PixAI LoRA -->
+                <!-- PixAI LoRA models -->
                 <details class="prompt-box" id="lora-pixai">
                     <summary>
                         <span class="prompt-title">オリジナルLoRA（PixAI）</span>
                     </summary>
                     <div class="prompt-content">
                         <p class="prompt-desc">
-                            PixAIで使用できるLoRAモデルです。
+                            PixAIで使用できるLoRAモデル2種です。
                         </p>
 
                         <div class="prompt-actions">
-                            <a href="https://pixai.art/model/1931496590778080545?utm_source=copy_web" target="_blank"
+                            <a href="https://pixai.art/model/1931496590778080545" target="_blank"
                                 rel="noopener noreferrer" class="icon-btn">
-                                PixAI
+                                LoRA 1
+                            </a>
+                            <a href="https://pixai.art/model/2033699712823912404" target="_blank"
+                                rel="noopener noreferrer" class="icon-btn">
+                                LoRA 2
                             </a>
                             <button type="button" class="icon-btn" onclick="copyPromptUrl('lora-pixai', this)">
                                 URL
@@ -190,7 +194,13 @@
 
                         <div class="copy-container">
                             <textarea
-                                readonly>https://pixai.art/model/1931496590778080545?utm_source=copy_web</textarea>
+                                readonly>https://pixai.art/model/1931496590778080545</textarea>
+                            <button onclick="copyPrompt(this)">コピーする</button>
+                        </div>
+
+                        <div class="copy-container">
+                            <textarea
+                                readonly>https://pixai.art/model/2033699712823912404</textarea>
                             <button onclick="copyPrompt(this)">コピーする</button>
                         </div>
                     </div>
