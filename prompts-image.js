@@ -445,5 +445,41 @@ highly detailed, elegant tea setting, delicate sugar lace floating on tea, soft 
 ■2人の絵を描くためのプロンプトを作成してください。絵の中には種族名やメモや書き込みを入れること。`
             }
         ]
+    },
+    {
+        id: "aquarium-dress",
+        title: "アクアリウムドレス",
+        desc: "水の世界を閉じ込めた、幻想的なアクアリウムドレスを作る画像お題。シンプルなドレス版と、その人らしさを詰め込むアレンジ版があります。",
+        image: "image/sample20.jpg",
+        link: "https://note.com/sakana_aidayo/n/n0093d9a5a8ed",
+        prompts: [
+            {
+                label: "アクアリウムドレス",
+                image: "",
+                body: `［あなたの名前など］にこのプロンプトの服着せて！（画像生成して！）
+A cute fantasy dress inspired by an aquarium. The dress is made of translucent aqua-blue fabric with a glossy, glass-like appearance. The skirt is a puffy balloon shape, resembling a miniature aquarium filled with tiny goldfish, aquatic plants, and floating bubbles. Multiple layers of sheer organza create a light, airy feeling. The hem is softly ruffled like waves. The overall design is elegant, dreamy, and magical, with pastel colors and an underwater fairy-tale aesthetic.`
+            },
+            {
+                label: "世界にひとつだけのアクアリウムドレス",
+                image: "",
+                body: `お題：【名前】をイメージしたアクアリウムドレスを作ろう！
+
+あなたの雰囲気や好きなもの、思い出、性格、会話履歴などからイメージを膨らませて、「世界にひとつだけ」のアクアリウムドレスをデザインしてみよう！
+
+ドレスの中には、あなたらしさを表す水の世界が広がっています。
+
+例えば…
+
+* どんな魚が泳いでいる？
+* 水の色は透き通る青？夕焼け色？深海みたいな紺色？
+* 水草やサンゴ、貝殻、クラゲなど、どんな景色が広がっている？
+* 宝石や星、花、本、ゲームなど、あなたを象徴するモチーフは？
+* スカートの中にはどんな小さな世界が閉じ込められている？
+
+「好き」と「あなたらしさ」をぎゅっと詰め込んだ、世界で一着だけのアクアリウムドレスを作ってみよう！
+既存のドレスのイメージにとらわれる必要はないよ。
+ドレスの説明文も画像の中に入れてみてね。`
+            }
+        ]
     }
 ];
