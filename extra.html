@@ -38,6 +38,81 @@
                 <button id="toggleAllBtn" class="toggle-all-btn" onclick="toggleAll()">すべて開く</button>
             </div>
             <section class="prompt-list">
+                <!-- Image focus-line tool -->
+                <details class="prompt-box" id="image-focus-lines">
+                    <summary>
+                        <span class="prompt-title">画像に集中線を追加</span>
+                    </summary>
+                    <div class="prompt-content">
+                        <p class="prompt-desc">
+                            画像の中で目立たせたい部分を囲むと、集中線を追加できます。画像はアップロードされず、端末内だけで処理されます。
+                        </p>
+
+                        <div class="prompt-actions">
+                            <button type="button" class="icon-btn" onclick="copyPromptUrl('image-focus-lines', this)">
+                                URL
+                            </button>
+                        </div>
+
+                        <div class="focus-tool" id="focusLineTool">
+                            <input class="focus-file-input" type="file" accept="image/*" hidden>
+
+                            <button class="focus-drop-zone" type="button">
+                                <span class="focus-burst-mark" aria-hidden="true"></span>
+                                <span class="focus-drop-title">画像を選ぶ</span>
+                                <span class="focus-drop-detail">スクリーンショットや写真をここへ</span>
+                            </button>
+
+                            <div class="focus-stage" hidden>
+                                <canvas aria-label="集中線を加える画像。目立たせたい部分を指やマウスで囲んでください"></canvas>
+                                <div class="focus-canvas-hint">目立たせたい部分を指で囲む</div>
+                            </div>
+
+                            <div class="focus-selection-actions" hidden>
+                                <button class="focus-text-button focus-reselect-button" type="button">範囲を選び直す</button>
+                                <button class="focus-text-button focus-change-image-button" type="button">別の画像にする</button>
+                            </div>
+
+                            <div class="focus-controls" aria-disabled="true">
+                                <p class="focus-step-title"><span>01</span> 目立たせたい部分を囲む</p>
+                                <p class="focus-help">線をかぶせたくない部分まで、少しゆったり選択してください。</p>
+                                <p class="focus-step-title"><span>02</span> 線を整える</p>
+
+                                <div class="focus-slider-list">
+                                    <label>
+                                        <span><b>本数</b><output data-output="density">64</output></span>
+                                        <input data-slider="density" type="range" min="24" max="120" value="64">
+                                    </label>
+                                    <label>
+                                        <span><b>広がり</b><output data-output="length">100%</output></span>
+                                        <input data-slider="length" type="range" min="45" max="100" value="100">
+                                    </label>
+                                    <label>
+                                        <span><b>外側の太さ</b><output data-output="weight">20</output></span>
+                                        <input data-slider="weight" type="range" min="4" max="38" value="20">
+                                    </label>
+                                    <label>
+                                        <span><b>画像との余白</b><output data-output="gap">22</output></span>
+                                        <input data-slider="gap" type="range" min="4" max="80" value="22">
+                                    </label>
+                                </div>
+
+                                <div class="focus-color-row">
+                                    <span>線の色</span>
+                                    <label><input type="radio" name="focusLineColor" value="#111111" checked><i class="black"></i>黒</label>
+                                    <label><input type="radio" name="focusLineColor" value="#ffffff"><i class="white"></i>白</label>
+                                </div>
+
+                                <button class="focus-download-button" type="button" disabled>
+                                    画像を保存する <span aria-hidden="true">↓</span>
+                                </button>
+                            </div>
+
+                            <div class="focus-toast" role="status" aria-live="polite"></div>
+                        </div>
+                    </div>
+                </details>
+
                 <!-- AIパートナーQ&A（基本編） -->
                 <details class="prompt-box" id="qa-basic">
                     <summary>
@@ -356,6 +431,7 @@
             btn.textContent = isOpening ? 'すべて閉じる' : 'すべて開く';
         }
     </script>
+    <script src="focus-lines.js"></script>
 </body>
 
 </html>
