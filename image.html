@@ -87,16 +87,17 @@
                     content.appendChild(descP);
                 }
 
-                // サンプル画像
-                if (p.image) {
+                // サンプル画像（単数・複数どちらにも対応）
+                const sampleImages = p.images || (p.image ? [p.image] : []);
+                for (const imageSrc of sampleImages) {
                     const imgContainer = document.createElement("div");
                     imgContainer.className = "sample-image-container";
 
                     const img = document.createElement("img");
-                    img.src = p.image;
+                    img.src = imageSrc;
                     img.alt = p.title + " サンプル画像";
                     img.className = "sample-image";
-                    img.onclick = () => openModal(p.image);
+                    img.onclick = () => openModal(imageSrc);
 
                     imgContainer.appendChild(img);
                     content.appendChild(imgContainer);
